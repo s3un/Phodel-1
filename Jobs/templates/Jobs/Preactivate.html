@@ -1,0 +1,26 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<table class="table" style="margin-top:80px;">
+	<tr>
+		<th>Title</th>
+		<th>Lga</th>
+		<th>state</th>
+		<th>mode</th>
+	</tr>
+	{% for jo in job%}	
+	<tr>
+		<td>{{jo.Job_title}}</td>
+		<td>{{jo.lga}}</td>
+		<td>{{jo.state}}</td>
+		<td>
+       {% if jo.is_active is True %}
+       <a href="{% url 'Home:deactive_jobs' dpk=jo.pk %} "><button>Deactivate</button></a>
+       {%else%} 
+       <a href="{% url 'Home:active_jobs' pk=jo.pk %} "><button>Activate</button></a>
+       {%endif%} 
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

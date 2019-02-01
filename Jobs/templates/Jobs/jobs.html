@@ -1,0 +1,89 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<br><br><br>
+<div class="homebox"></div>
+<br>
+<br>
+<div>
+  <div class="row">
+    <div class="col-md-9">
+        <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Featured Jobs</h3>
+              </div></div>
+              <div class="boxs feature">
+              	{% for job in Fjobs%}
+              <div class="tab-info">
+                  <a href="jobdetails.html" ><h4>{{job.jobs.Job_title}}</h4></a>
+                  <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
+                  <p>{{job.jobs.personal_note}}</p>
+              </div>
+              {% endfor %}
+            </div>
+              
+        </div>
+        <div class="col-md-12">
+            <div class="boxs">
+                <div class="singletab">
+                    <P style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >NEW JOBS</P>
+                  </div></div>
+                  {% for jo in job%}
+                  <div class="boxs">
+                  <div class="tab-info">
+                     <a href="jobdetails.html" ><h4>{{jo.Job_title}}</h4></a>
+                   <h4>{{jo.lga}}, {{jo.state}}</h4>
+                   <p>{{jo.personal_note}}</p>
+                  </div>
+                </div>
+                {% endfor %}
+                      <center><ul class="pagination pagination-md ">
+                          <li class="active"><a  href="#">1</a></li>
+                          <li><a href="#">2</a></li>
+                          <li><a href="#">3</a></li>
+                          <li><a href="#">4</a></li>
+                          <li><a href="#">5</a></li>
+                        </ul></center>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="col-sm-12">
+          <div class="boxs">
+              <div class="singletab">
+                  <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >Hot Jobs</h3>
+                </div></div>
+                <div class="boxs feature">
+                	{% for job in hjobs %}
+                      <div class="tab-info"><a href="jobdetails.html" ><h4>{{job.jobs.Job_title}}</h4></a></div>
+                    {% endfor %}
+                </div>
+          
+        </div>
+        <div class="col-sm-12">
+            <div class="boxs">
+                <div class="singletab">
+                    <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >News</h3>
+                  </div></div>
+                  <div class="boxs feature">
+                        <div class="tab-info"><a href="" ><h4>MBGN</h4></a>
+                          <p>Its was a great event that occured in silverbird cinema ground hall <a href="news.html">Continue</a></p>
+                        </div>
+                        <div class="tab-info"><a href="" ><h4>Stutern</h4></a>
+                          <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                        </div>
+                        <div class="tab-info"><a href="" ><h4>Ushering</h4></a>
+                        <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                        </div>
+                        <div class="tab-info"><a href="" ><h4>MBGN</h4></a>
+                          <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                        </div>
+                    
+                  </div>
+            
+          </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

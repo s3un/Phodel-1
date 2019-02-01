@@ -1,0 +1,146 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="row"></div>
+<div class="col-md-7">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+                <div style="margin-top:50px;" class="col-md-12">
+                        <div class="boxs">
+                        <div class="singletab">
+                            <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Previous post</h3>
+                          </div></div>
+                          <div class="boxs feature">
+                          <div class="tab-info">
+                              <a href="jobdetails.html" ><h4>USHERING: A WEDDING AT IKOYI.</h4></a>
+                              <h4>Lagos</h4>
+                              <p>Ushering Duties</p>
+                          </div>
+                          <div class="tab-info">
+                              <a href="jobdetails.html" ><h4>USHERING: A WEDDING AT IKOYI.</h4></a>
+                              <h4>Lagos</h4>
+                              <p>Ushering Duties</p>
+                          </div>
+                          <div class="tab-info">
+                              <a href="jobdetails.html" ><h4>USHERING: A WEDDING AT IKOYI.</h4></a>
+                              <h4>Lagos</h4>
+                              <p>Ushering Duties</p>
+                          </div>
+                        </div>    
+                </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="col-sm-12">
+                        <div class="boxs">
+                            <div class="singletab">
+                                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >News</h3>
+                              </div></div>
+                              <div class="boxs feature">
+                                    <div class="tab-info"><a href="" ><h4>MBGN</h4></a>
+                                      <p>Its was a great event that occured in silverbird cinema ground hall <a href="news.html">Continue</a></p>
+                                    </div>
+                                    <div class="tab-info"><a href="" ><h4>Stutern</h4></a>
+                                      <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                                    </div>
+                                    <div class="tab-info"><a href="" ><h4>Ushering</h4></a>
+                                    <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                                    </div>
+                                    <div class="tab-info"><a href="" ><h4>MBGN</h4></a>
+                                      <p>Its was a great event that occured in silverbird cinema ground hall <a href="">Continue</a></p>
+                                    </div>  
+                              </div>
+                      </div>
+        </div>
+    </div>
+</div>
+</div>
+<div style="margin-top:50px;" class="col-sm-5">
+	{% include 'Jobs/create.html'%}
+	
+</div>
+<div class="container app">
+        <CENTER><P style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120);">TOP PICKS</P></CENTER>
+        <center>
+          <div class="row">
+            <div class="col-xs-11 col-md-10 col-centered">
+              <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="carousel-col">
+                          <div class="block yellow img-responsive">
+                            <a href=""><img src="{% static 'img/darcy.jfif' %}" style="width:226px;"></a>
+                          </div>
+                        </div>
+                      </div>
+      
+                  <div class="item">
+                      <div class="carousel-col">
+                        <div class="block yellow img-responsive">
+                          <img src="{% static 'img/body.jpg' %}" style="width:226px;">
+                        </div>
+                      </div>
+                    </div>
+      
+      
+                  <div class="item">
+                      <div class="carousel-col">
+                        <div class="block yellow img-responsive">
+                          <img src="{% static 'img/body3.jpg' %}" style="width:226px;">
+                        </div>
+                      </div>
+                    </div>
+      
+                  <div class="item">
+                    <div class="carousel-col">
+                      <div class="block yellow img-responsive">
+                        <img src="{% static 'img/body3.jpg' %}" style="width:226px;">
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="item">
+                      <div class="carousel-col">
+                        <div class="block yellow img-responsive">
+                          <img src="{% static 'img/body3.jpg' %}" style="width:226px;">
+                        </div>
+                      </div>
+                    </div>
+      
+                    <div class="item">
+                      <div class="carousel-col">
+                        <div class="block yellow img-responsive">
+                          <img src="{% static 'img/nike00.jpg' %}" style="width:226px;">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+        
+                <!-- Controls -->
+                <div class="left carousel-control">
+                  <a href="#carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </div>
+                <div class="right carousel-control">
+                  <a href="#carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+        
+            </div>
+          </div>
+        </center>  
+        </div> 
+
+{% endblock %}

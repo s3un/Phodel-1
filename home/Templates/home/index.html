@@ -1,0 +1,231 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles %}
+<!--
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="{% url 'Home:signup' %} ">SignUp</a>
+</body>
+</html>-->
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row"> 
+        <div class="firstpic image-reponsive">
+         
+        </div>
+      <div class="col-md-9 centered">
+          <center><p style="font-family:ocraext; ">PHODEL</p>
+            <h4>Our automated, hassle-free process allows you to book models,</h4> 
+            <h4>in as quickly as one hour.</h4>
+                <h4>Use our booking tools for free. Submit your job</h4>
+          </center>  
+          <center>
+              <div class="buttons">
+                  <a href="signin.html" style="margin-top:20px; background:black; border:none; font-size: 20px; border-radius: 10px;" type="button" role="button" class="btn btn-primary">MODELS</a>
+                  <a href="signin.html"  style="margin-top:20px; background:black; border:none; margin-left: 30px; border-radius:10px; font-size: 20px;" type="button" role="button" class="btn btn-primary">
+                   SEEKERS</a>
+              </div>
+          </center>
+      </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="supportbox">
+      <div class="row">
+        <div class="col-md-12">
+          <center><h3>SUPPORTED FIRMS</h3></center>
+        </div>
+      </div>
+    </div>
+</div>
+<br>
+<div class="bgimg-1">
+    <div class="caption">
+    <!-- <span class="border" style="color:rgb(255, 255, 255);">
+        <div class="container">
+            <center><h1 style="font-weight:bold; font-size:0px;">CAREER</h1></center>
+                <div class="row">
+                    <div class="col-md-5">
+                      <div class="col-md-12">
+                        <center><h2 style="font-weight:bold; ">MODELS</h2>
+                          <h3 class="textph">Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
+                        </h3></center>
+                      </div>
+                    </div>
+          
+                    <div class="col-md-5">
+                      <div class="col-md-12">
+                        <center><h2 style="font-weight:bold;">SEEKERS</h2>
+                          <h3>Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
+                        </h3></center>
+                      </div>
+                    </div>
+                </div>
+          </div>
+    </span> -->
+    <center>
+        <h1>CAREER</h1>
+     </center>          
+  </div>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="col-md-12">
+                <center><h2 style="font-weight:bold; ">MODELS</h2>
+                  <p class="textph">Phodel provides a platform for models to connect and showcase themselves, we operate to make the least model be known.
+                </p></center>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="col-md-12">
+                <center><h2 style="font-weight:bold;">SEEKERS</h2>
+                  <p>Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
+                </p></center>
+              </div>
+            </div>
+        </div>
+  </div>
+<br>
+<div class="container app">
+  <CENTER><P style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120);">TOP MODELS</P></CENTER>
+  <center>
+    <div class="row">
+      <div class="col-xs-11 col-md-10 col-centered">
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+          <div class="carousel-inner">
+              <div class="item active">
+                  <div class="carousel-col">
+                    <div class="block yellow img-responsive">
+                      <a href=""><img src="{% static 'img/darcy.jfif' %}" style="width: 90%; height:250px;"></a>
+                    </div>
+                  </div>
+                </div>
+
+            <div class="item">
+                <div class="carousel-col">
+                  <div class="block yellow img-responsive">
+                    <img src="{% static 'img/body.jpg' %}" style="width: 90%; height:250px;">
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="item">
+                <div class="carousel-col">
+                  <div class="block yellow img-responsive">
+                    <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                  </div>
+                </div>
+              </div>
+
+            <div class="item">
+              <div class="carousel-col">
+                <div class="block yellow img-responsive">
+                  <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                </div>
+              </div>
+            </div>
+
+            <div class="item">
+                <div class="carousel-col">
+                  <div class="block yellow img-responsive">
+                    <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="carousel-col">
+                  <div class="block yellow img-responsive">
+                    <img src="{% static 'img/nike00.jpg' %}" style="width: 90%; height:250px;">
+                  </div>
+                </div>
+              </div>
+          </div>
+  
+          <!-- Controls -->
+          <div class="left carousel-control">
+            <a href="#carousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </div>
+          <div class="right carousel-control">
+            <a href="#carousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </center>  
+  </div> 
+<br>
+
+<div class="bgimg-2">
+    <div class="caption">
+      <center>
+         <p> Our model are experienced and mostly agency free ensuring you get<br>
+          the best posiible outcome from your shoot.</p>
+      </center>
+    </div>
+    <center>
+      <div class="row">
+        <div class="col-md-12">
+            <div class="buttons">
+                <a href="#" style="margin-top:20px; background:black; border:none; font-size: 20px; border-radius: 10px;" type="button" role="button" class="btn btn-primary">MODELS</a>
+                <a href="#"  style="margin-top:20px; background:black; border:none; margin-left: 30px; border-radius:10px; font-size: 20px;" type="button" role="button" class="btn btn-primary">
+                 SEEKERS</a>
+              </div>
+        </div>
+      </div> 
+    </center>
+  </div>
+<div class="container-fluid">
+  <div class="testimonial">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="theader"><h1>Testimonial</h1></div>
+        <div class="col-md-6 tfull">
+         <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+            <center><h3>ADAMS TEMIDIRE</h3></center>
+            <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+            <div class="col-md-12 just">
+                <p style="text-align:center; font-size:20px;"><q id="b">I booked models using PHODEL and the experience was amazing,
+                  no charges, had to make a choice out of so many,
+                  my office wasn't crowded with models</q>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-6 tfull">
+            <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+               <center><h3>ADAMS TEMIDIRE</h3></center>
+               <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+               <div class="col-md-12 just">
+                   <p style="text-align:center; font-size:20px;"><q>I booked models using PHODEL and the experience was amazing,
+                    no charges, had to make a choice out of so many,
+                    my office wasn't crowded with models</q>
+                   </p>
+               </div>
+           </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 details">
+     
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

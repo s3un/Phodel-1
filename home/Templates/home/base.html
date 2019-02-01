@@ -1,0 +1,89 @@
+{% load static from staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phodel</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+  <script src="{% static 'jq/jquery.js' %}"></script> 
+</head>
+
+
+<body >
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        <a href="{% url 'Home:index' %}"><img src="{% static 'img/logo.jpeg' %}" style="width:100px; height:50px;"></a>
+      </div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+    </div>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="{% url 'Home:company' %}">BOOKERS</a></li>
+      <li><a href="{% url 'Home:preactivate'%}">Job Activate</a></li>
+      <li><a href="{% url 'Home:jobs'%}">JOBS</a></li>
+      <li><a href="">FAQ</a></li>
+      <li><a href="{% url 'Home:login'%}">MODELS</a></li>
+    </ul>
+    <form class="navbar-form navbar-right">
+      {% if user.is_authenticated%}
+      <p>Welcome {{user.username}}. <a href="{% url 'Home:logout' %}"><button type="button" style=" background:rgb(0, 0, 0);" class="btn btn-danger">Logout</button></a></p>
+      {% else %}
+      <a href="{% url 'Home:login'%}"><button style=" background:rgb(0, 0, 0);" type="button" class="btn btn-primary">
+        Sign in <span class="glyphicon glyphicon-user"></span></button></a>
+      {% endif%}
+    </form>
+  </div>
+  </div>
+</div> 
+<div style="padding-top:50px">
+{% block content %}
+
+{% endblock%}
+</div>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 lastrow">
+            <div class="col-md-12">
+              <div class="legality">
+                 <center> Copyright © PHODEL LTD. 2018 - <a href="">Terms and condition</a>
+                  <br>
+                  <a href=""><img style="width:30px;" src="{% static 'img/instagram.svg' %}"></a>
+                  <a href="https://web.facebook.com/phodelng/?ref=bookmarks"><img style="width:30px;" src="{% static 'img/facebook (1).svg' %}"></a>
+                  <a href=""><img style="width:30px;" src="{% static 'img/twitter.svg' %}"></a>
+              </center>
+              </div>
+            </div>
+        </div>  
+      </div>
+    </div>
+      <script>
+        $('.carousel[data-type="multi"] .item').each(function() {
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+
+  for (var i = 0; i < 2; i++) {
+    next = next.next();
+    if (!next.length) {
+      next = $(this).siblings(':first');
+    }
+
+    next.children(':first-child').clone().appendTo($(this));
+  }
+});
+      </script>  
+</body>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</html>

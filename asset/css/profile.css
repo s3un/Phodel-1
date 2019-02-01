@@ -1,0 +1,135 @@
+.image-header{
+	height:50vh;
+	min-height:300px;
+	width:100%;
+	background-image:url(/img/dgo-3.jpg);
+	background: center center no-repeat;
+	-webkit-background-size:cover;
+	background-size:cover;
+	position:relative
+	}
+@font-face {
+     font-size: 20px; font-family: OCRAEXT; padding-top:EXT;
+    src: url( 'ammat/fonts/OCRAEXT.TTF');
+}
+a{
+	color: black
+}
+label{
+	color: white; 
+	font-size: 20px; 
+	font-family: OCRAEXT; 
+	padding-top:2%;
+	font-variant: small-caps;
+}
+ .single-member{
+ 	box-shadow: rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+ 	margin-bottom: 5%;
+ } 
+ .single-member .team-heading{
+ 	-webkit-background-size:cover;
+ 	background-size: cover;
+ 	height:100px;
+ 	background-color: #252525;
+ }
+  .team-heading1{
+ 	-webkit-background-size:cover;
+ 	background-size: cover;
+ 	height:50px;
+ 	background-color: #252525;
+ }
+ .single-member .member-img{
+ 	position: relative;
+ 	top: -50px;
+ 	margin-bottom: -50px;
+  }
+ .single-member .member-img img{
+ 	width: 100px;
+ 	height: 100px;
+ 	max-width: 200px;
+ 	max-height: 200px;
+ 	border-radius: 50%;
+ 	/*border: 5px solid rgba(255,255,255,0.5);*/
+ }
+/* .member-data{
+ 	padding: 5%
+ }*/
+ .gallery h4{
+ 	margin: 0;
+ 	font-size: 20px;
+ 	font-family: sans-serif;
+ 	text-align: left;
+ 	padding: 2%;
+ 	font-variant: small-caps;
+ 	color: #70451c;
+ }
+
+ .member-info h2{
+ 	margin: 0;
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	font-family: OCRAEXT;
+ 		font-variant: small-caps;
+ }
+  .member-info h4{
+ 	margin: 0;
+ 	font-size: 20px;
+ 	font-family: sans-serif;
+ 	text-align: left;
+ 	padding: 2%;
+ 	font-variant: small-caps;
+ }
+ .member-info h3{
+ 	font-size: 16px;
+ 		font-variant: small-caps;
+ }
+ .member-info{
+ 	
+ }
+ .member-info p{
+ 	width: 90%;
+ 	margin: auto;
+ 	font-variant: small-caps;
+ 	text-align:justify;
+ 	margin-bottom: 2%
+ }
+ .member-socials a{
+ 	height: 30px;
+ 	width: 30px;
+ 	overflow: hidden;
+ 	margin: 0 3px;
+ 	padding: 5px;
+ 	border-radius: 50%;
+ 	display: inline-block;
+ }
+ .member-socials a i {
+ 	color: #fff
+ }
+ .color1{
+ 	background: #3748A5
+ }
+ .color2{
+ 	background: #3DA2F4
+ }
+.color3{
+	background: #41A2F2
+} 
+.member-info > .container-fluid{
+	padding: 3%;
+	border-bottom: 2px solid #cccccc
+}
+
+.past p{
+	text-align: center;
+}
+/*@media only screen and (min-width: 768px) and (max-width:1024px){
+	.single-member{
+		margin-bottom: 5%;
+	}
+} 
+
+@media only screen and (max-width:1024px){
+		.single-member{
+		margin-bottom: 5%;
+	}
+}*/

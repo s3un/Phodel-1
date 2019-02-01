@@ -1,0 +1,63 @@
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
+from django import forms
+from django.db import transaction
+from django.forms.utils import ValidationError
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import Pmodel,CustomUser,Pcompany,Gender
+class ModelSignUpForm(UserCreationForm):
+	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+	gender = forms.ModelChoiceField(queryset=Gender.objects.all(), )
+	class Meta(UserCreationForm.Meta):
+		# User= get_user_model()
+		model = CustomUser
+		help_texts = {
+            'password1': None,
+            'email': None,
+        }
+	
+	def save(self):
+		user = super().save(commit=False)
+		user.is_model = True
+		user.save()
+		pmodel = Pmodel.objects.create(user=user, email=self.cleaned_data.get('email'), gender=self.cleaned_data.get('gender'))
+		# pmodel.email.create(*self.cleaned_data.get('email'))
+		# pmodel.gender.create(*self.cleaned_data.get('gender'))
+		return user
+
+class CompanySignUpForm(UserCreationForm):
+	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+	company_name= forms.CharField()
+	class Meta(UserCreationForm.Meta):
+		# User= get_user_model()
+		model = CustomUser
+		help_texts = {
+            'password': None,
+            'email': None,
+        }
+
+	
+	def save(self):
+		user = super().save(commit=False)
+		user.is_company = True
+		user.save()
+		group = Group.objects.get(name='Company')
+		user.groups.add(group)
+		pcompany = Pcompany.objects.create(user=user, email=self.cleaned_data.get('email'), company_name=self.cleaned_data.get('company_name'))
+		# pcompany.email.create(*self.cleaned_data.get('email'))
+		# pcompany.company_name.create(*self.cleaned_data.get('company_name'))
+		return user
+
+class register(UserCreationForm):
+	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+	class Meta(UserCreationForm):
+		model = CustomUser
+		fields = ('username', 'email', 'is_model', 'is_company')
+
+class Change_detail(UserChangeForm):
+	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+	class Meta:
+		model = CustomUser
+		fields = ('username','email', 'is_model', 'is_company')

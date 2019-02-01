@@ -1,0 +1,31 @@
+{% load static from staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phodel</title>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+  <script src="{% static 'jq/jquery.js' %}"></script> 
+</head>
+
+<body style="background-image:url('/static/img/wall2.jpg'); opacity: 0.8;">
+   <div class="container">
+      <center>
+          <a href="{% url 'Home:index' %}"><img src="{% static 'img/logo.jpeg' %}" style="width:200px; margin-top: 30px;"></a>
+      </center>
+    </div>
+<center>
+
+</center>
+
+{% block content %}
+
+{% endblock %}
+</body>
+{% block script %}
+
+{% endblock%}
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</html> 
