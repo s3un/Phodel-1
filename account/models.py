@@ -26,6 +26,9 @@ class CustomUser(AbstractUser):
 
 class Pmodel(models.Model):
 	user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+	first_name= models.CharField(max_length=20, default='Name')
+	last_name = models.CharField(max_length=20, default='Name')
+	tag = models.CharField(max_length=10, default='Model')
 	gender = models.ForeignKey(Gender, on_delete=models.CASCADE, default=True)
 	height = models.CharField(max_length=50, blank=True)
 	email = models.EmailField()
@@ -33,7 +36,7 @@ class Pmodel(models.Model):
 	weight = models.CharField(max_length=50, blank=True)
 	eye_color=models.CharField(max_length=50, blank=True)
 	age = models.PositiveIntegerField(blank=True, default=1)
-	model_image = models.ImageField(upload_to="Users/Model")
+	model_image = models.ImageField(upload_to="Users/Model", default='Users/Model/user.png', blank=True)
 
 	def publish(self):
 		self.save()
@@ -43,9 +46,10 @@ class Pmodel(models.Model):
 
 class Pcompany(models.Model):
 	user = models.OneToOneField('CustomUser',on_delete=models.CASCADE)
+	tag= models.CharField(max_length=10, default='Seeker')
 	company_name= models.CharField(max_length=50)
 	address = models.TextField()
-	contact_number = models.CharField(max_length=50)
+	contact_number = models.CharField(max_length=50, blank=True)
 	email  = models.EmailField()
 
 	def publish(self):
@@ -54,8 +58,21 @@ class Pcompany(models.Model):
 	def __str__(self):
 		return self.user.username
 
+class images(models.Model):
+	User = models.ForeignKey('Pmodel', on_delete="CASCADE")
+	image = models.ImageField(upload_to="'Users'+User", blank=True)
 
+	def publish(self):
+		self.save()
 
+	def __str__(self):
+		return self.User.first_name
 
+class interest(models.Model):
+	Users=models.ForeignKey('Pmodel', on_delete=models.CASCADE)
+	interests = models.CharField(max_length=50, blank=True)
+	def publish(self):
+		self.save()
 
-
+	def __str__(self):
+		return self.User.first_name +' '+ self.interests

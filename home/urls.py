@@ -7,7 +7,11 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 app_name = 'Home'
 urlpatterns = [
-	url(r'^$', views.Home.as_view(), name='index'),
+	url(r'^$', views.Home, name='index'),
+	url(r'^base/',views.base, name='bases'),
+	url(r'^home/$', views.LoginViews, name='homeView'),
+	url(r'^models/$', views.Modls, name='modl'),
+	url(r'^Profile/(?P<pk>\d+)/$', views.profile, name='profile'),
     url(r'account/', include('account.urls'), name='account'),
     url(r'Job/', include('Jobs.urls'), name='Job'),
     # url(r'Product/', include('Product.urls'), name='Product'),

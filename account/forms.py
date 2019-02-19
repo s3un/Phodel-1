@@ -6,21 +6,27 @@ from django.forms.utils import ValidationError
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Pmodel,CustomUser,Pcompany,Gender
 class ModelSignUpForm(UserCreationForm):
+	first_name = forms.CharField(max_length=30, required=True, help_text='Enter your Firstname')
+	last_name = forms.CharField(max_length=30, required=True, help_text='Enter your Lastname')
 	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 	gender = forms.ModelChoiceField(queryset=Gender.objects.all(), )
 	class Meta(UserCreationForm.Meta):
 		# User= get_user_model()
 		model = CustomUser
-		help_texts = {
-            'password1': None,
-            'email': None,
-        }
-	
+		fields= ('username', 'first_name', 'last_name','gender', 'email', 'password1', 'password2' )
 	def save(self):
 		user = super().save(commit=False)
 		user.is_model = True
+		user.first_name=self.cleaned_data['first_name']
+		user.last_name=self.cleaned_data['last_name']
+		user.email=self.cleaned_data['email']
 		user.save()
-		pmodel = Pmodel.objects.create(user=user, email=self.cleaned_data.get('email'), gender=self.cleaned_data.get('gender'))
+		pmodel = Pmodel.objects.create(user=user, 
+			email=self.cleaned_data.get('email'), 
+			gender=self.cleaned_data.get('gender'), 
+			first_name=self.cleaned_data.get('first_name'),
+			last_name=self.cleaned_data.get('last_name')
+			)
 		# pmodel.email.create(*self.cleaned_data.get('email'))
 		# pmodel.gender.create(*self.cleaned_data.get('gender'))
 		return user

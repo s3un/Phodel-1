@@ -20,8 +20,9 @@
       <center><h2 style="color:white;">Sign in</h2></center>
       <div style="border: 2px dashed white; padding:2%; margin-bottom:5%;">
       <form method="post" novalidate >
-        {{form.non_field_errors}}
         {% csrf_token %}
+        {{form.non_field_errors}}
+        
         <input type="hidden" name="next" value="{{ next }}">
         <div class="form-group">
           {{ form.username|as_crispy_field }}

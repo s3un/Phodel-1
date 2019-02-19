@@ -8,17 +8,22 @@
 <div>
   <div class="row">
     <div class="col-md-9">
-        <div class="col-md-12">
+          <div class="col-md-12">
             <div class="boxs">
             <div class="singletab">
-                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Featured Jobs</h3>
+                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Gigs Applications</h3>
               </div></div>
               <div class="boxs feature">
-              	{% for job in Fjobs%}
+                {% for ap in appl%}
               <div class="tab-info">
-                  <a href="jobdetails.html" ><h4>{{job.jobs.Job_title}}</h4></a>
-                  <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
-                  <p>{{job.jobs.personal_note}}</p>
+                  <h4>{{ap.Job_title}}</h4>
+                  {% if ap.status is 1%}
+                  <h4>Status:<span class="text-success">Shortlisted</span></h4>
+                  {% elif ap.status is 2%}
+                  <h4>Status:<span class="text-danger">Declined</span></h4>
+                  {% else %}
+                  <h4>Status:<span class="text-info">Received</span></h4>
+                  {% endif %}
               </div>
               {% endfor %}
             </div>
@@ -27,12 +32,13 @@
         <div class="col-md-12">
             <div class="boxs">
                 <div class="singletab">
-                    <P style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >NEW JOBS</P>
-                  </div></div>
+                    <P style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >New Gigs</P>
+                  </div>
+            </div>
                   {% for jo in job%}
                   <div class="boxs">
                   <div class="tab-info">
-                     <a href="jobdetails.html" ><h4>{{jo.Job_title}}</h4></a>
+                     <a href="{% url 'Home:jobdetails' pk=jo.pk%}" ><h4>{{jo.Job_title}}</h4></a>
                    <h4>{{jo.lga}}, {{jo.state}}</h4>
                    <p>{{jo.personal_note}}</p>
                   </div>
@@ -48,18 +54,39 @@
         </div>
     </div>
     <div class="col-md-3">
+          <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Featured Gigs</h3>
+              </div></div>
+              <div class="boxs feature">
+                {% for job in Fjobs%}
+              <div class="tab-info">
+                  <a href="{% url 'Home:jobdetails' pk=job.jobs.pk%}" ><h4>{{job.jobs.Job_title}}</h4></a>
+                  <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
+                  <p>{{job.jobs.personal_note}}</p>
+              </div>
+              {% endfor %}
+            </div>
+              
+        </div>
         <div class="col-sm-12">
           <div class="boxs">
               <div class="singletab">
-                  <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >Hot Jobs</h3>
+                  <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >Hot Gigs</h3>
                 </div></div>
                 <div class="boxs feature">
                 	{% for job in hjobs %}
-                      <div class="tab-info"><a href="jobdetails.html" ><h4>{{job.jobs.Job_title}}</h4></a></div>
+                      <div class="tab-info">
+                        <a href="{% url 'Home:jobdetails' pk=job.jobs.pk%}" ><h4>{{job.jobs.Job_title}}</h4></a>
+                         <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
+                         <p>{{job.jobs.personal_note}}</p>
+                      </div>
                     {% endfor %}
                 </div>
           
         </div>
+
         <div class="col-sm-12">
             <div class="boxs">
                 <div class="singletab">

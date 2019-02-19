@@ -8,6 +8,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
   <script src="{% static 'jq/jquery.js' %}"></script> 
+{%block style%}
+
+{%endblock%}  
 </head>
 
 
@@ -28,29 +31,37 @@
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="contact.html">CONTACT</a></li>
-      <li><a href="{% url 'Home:company' %}">BOOKERS</a></li>
+      <li><a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}">SEEKERS</a></li>
       <li><a href="{% url 'Home:preactivate'%}">Job Activate</a></li>
       <li><a href="{% url 'Home:jobs'%}">JOBS</a></li>
       <li><a href="">FAQ</a></li>
-      <li><a href="{% url 'Home:login'%}">MODELS</a></li>
+      <li><a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}">MODELS</a></li>
     </ul>
-    <form class="navbar-form navbar-right">
-      {% if user.is_authenticated%}
-      <p>Welcome {{user.username}}. <a href="{% url 'Home:logout' %}"><button type="button" style=" background:rgb(0, 0, 0);" class="btn btn-danger">Logout</button></a></p>
-      {% else %}
+    {% if user.is_authenticated%}
+    <div class="navbar-form navbar-right">
+            <a style="color:black; font-size: border:1px solid black; padding:15%; "
+      href="{% url 'Home:logout' %}">Logout</a>
+    </div>
+    <form class="navbar-form  navbar-right">
+      <p>Welcome <a href="{% url 'Home:profile' pk=user.pk %}">{{user.username}}
+       <!--{%if user.is_model is True%}<img style="width:38px; height:35px; border:3px dashed; border-radius:70%" src="{{pmod.model_image.url}}">{% endif%}--></a></p>
+      </form>
+           {% else %}
+      <form class="navbar-right">
       <a href="{% url 'Home:login'%}"><button style=" background:rgb(0, 0, 0);" type="button" class="btn btn-primary">
         Sign in <span class="glyphicon glyphicon-user"></span></button></a>
-      {% endif%}
-    </form>
+      </form>
+    
+    {% endif%}
   </div>
   </div>
 </div> 
-<div style="padding-top:50px">
+<div>
 {% block content %}
 
 {% endblock%}
 </div>
-  <div class="container-fluid">
+  <div class="container-fluid " style="position:relative; bottom:0; width:100%;">
       <div class="row">
         <div class="col-md-12 lastrow">
             <div class="col-md-12">
@@ -86,4 +97,7 @@
       </script>  
 </body>
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascripts%}
+
+{% endblock %}
 </html>

@@ -24,8 +24,8 @@
           </center>  
           <center>
               <div class="buttons">
-                  <a href="signin.html" style="margin-top:20px; background:black; border:none; font-size: 20px; border-radius: 10px;" type="button" role="button" class="btn btn-primary">MODELS</a>
-                  <a href="signin.html"  style="margin-top:20px; background:black; border:none; margin-left: 30px; border-radius:10px; font-size: 20px;" type="button" role="button" class="btn btn-primary">
+                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; font-size: 20px; padding:10px;" type="button" role="button" >MODELS</a>
+                  <a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; font-size: 20px; padding:10px;" type="button" role="button">
                    SEEKERS</a>
               </div>
           </center>
@@ -68,29 +68,36 @@
     </span> -->
     <center>
         <h1>CAREER</h1>
-     </center>          
+     </center>
+
   </div>
         <div class="row">
             <div class="col-md-6">
               <div class="col-md-12">
-                <center><h2 style="font-weight:bold; ">MODELS</h2>
+                <div class="row">
+                <div class="col-md-4 col-xs-2"></div>
+               <center> <div class="col-md-4 col-xs-8 "><h3 style=" border: 1px dashed #eeb700; padding:5%; ">MODELS</h3></div></center>
+                <div class="col-md-4 col-xs-2"></div></div>
                   <p class="textph">Phodel provides a platform for models to connect and showcase themselves, we operate to make the least model be known.
-                </p></center>
+                </p>
               </div>
             </div>
 
             <div class="col-md-6">
               <div class="col-md-12">
-                <center><h2 style="font-weight:bold;">SEEKERS</h2>
+                <div class="row">
+                <div class="col-md-4 col-xs-2"></div>
+                <center><div class="col-md-4 col-xs-8 "><h3 style="border: 1px dashed #eeb700; padding:5%; ">SEEKERS</h3></div></center>
+                <div class="col-md-4 col-xs-2"></div></div>
                   <p>Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
-                </p></center>
+                </p>
               </div>
             </div>
         </div>
   </div>
 <br>
 <div class="container app">
-  <CENTER><P style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120);">TOP MODELS</P></CENTER>
+  <CENTER><p style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120); border:1px dashed black;">TOP MODELS</p></CENTER>
   <center>
     <div class="row">
       <div class="col-xs-11 col-md-10 col-centered">
@@ -177,10 +184,10 @@
     <center>
       <div class="row">
         <div class="col-md-12">
-            <div class="buttons">
-                <a href="#" style="margin-top:20px; background:black; border:none; font-size: 20px; border-radius: 10px;" type="button" role="button" class="btn btn-primary">MODELS</a>
-                <a href="#"  style="margin-top:20px; background:black; border:none; margin-left: 30px; border-radius:10px; font-size: 20px;" type="button" role="button" class="btn btn-primary">
-                 SEEKERS</a>
+            <div class="buttons2">
+                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%;  border:1px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt" >MODELS</a>
+                  <a  href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%; border:1px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt">
+                   SEEKERS</a>
               </div>
         </div>
       </div> 
@@ -188,32 +195,36 @@
   </div>
 <div class="container-fluid">
   <div class="testimonial">
-    <div class="row">
+    <div class="row" style="padding:1%;">
       <div class="col-md-12">
-        <div class="theader"><h1>Testimonial</h1></div>
-        <div class="col-md-6 tfull">
-         <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+        <div class="theader"><center><h2 style="color:black;">Testimonial</h2></center></div>
+        <div class="col-md-6 tfull ">
+            <div class="col-md-12 just">
+            <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
             <center><h3>ADAMS TEMIDIRE</h3></center>
             <center><h5>CO C.E.O Amatechy Foundation</h5></center>
-            <div class="col-md-12 just">
-                <p style="text-align:center; font-size:20px;"><q id="b">I booked models using PHODEL and the experience was amazing,
+            <div class="col-md-12 ">
+                <p class="justi" style="text-align:center; font-size:20px;   font-style: italic;"><q id="b">I booked models using PHODEL and the experience was amazing,
                   no charges, had to make a choice out of so many,
                   my office wasn't crowded with models</q>
                 </p>
             </div>
+            </div>
         </div>
 
-        <div class="col-md-6 tfull">
-            <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+        <div class="col-md-6 tfull ">
+            <div class="col-md-12 just">
+              <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
                <center><h3>ADAMS TEMIDIRE</h3></center>
                <center><h5>CO C.E.O Amatechy Foundation</h5></center>
-               <div class="col-md-12 just">
-                   <p style="text-align:center; font-size:20px;"><q>I booked models using PHODEL and the experience was amazing,
+               <div class="col-md-12 ">
+                   <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
                     no charges, had to make a choice out of so many,
                     my office wasn't crowded with models</q>
                    </p>
                </div>
-           </div>
+            </div>
+        </div>
       </div>
     </div>
 

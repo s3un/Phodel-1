@@ -14,8 +14,8 @@ class States(models.Model):
 		return self.state
 
 class Lga(models.Model):
-	lga = models.CharField(max_length=50)
-	state = models.ForeignKey(States, on_delete=models.DO_NOTHING)
+	lga = models.CharField(max_length=50, null=True)
+	state = models.ForeignKey(States, on_delete=models.DO_NOTHING, null=True)
 	def publish(self):
 		self.save()
 
@@ -38,7 +38,7 @@ class Job(models.Model):
 	Job_title = models.CharField( max_length=50)
 	Job_author = models.ForeignKey('account.CustomUser', on_delete=models.CASCADE, default=True)
 	state= models.ForeignKey('States', on_delete=models.CASCADE)
-	lga = models.ForeignKey('lga', on_delete=models.CASCADE)
+	lga = models.ForeignKey(Lga, on_delete=models.CASCADE, default=True)
 	town = models.CharField(max_length=50, default=' ')
 	street_address = models.CharField(max_length=100)
 	is_active = models.BooleanField(default=False)
@@ -76,4 +76,17 @@ class Hot_Jobs(models.Model):
 	def __str__(self):
 		return self.jobs.Job_title
 
+class Application(models.Model):
+	Job_title= models.CharField(max_length=50, blank=True)
+	job_id = models.PositiveIntegerField(default=1)
+	Job_author=models.CharField(max_length=50, blank=True)
+	applicant= models.CharField(max_length=100, blank=True)
+	applicant_id = models.PositiveIntegerField()
+	author_id = models.PositiveIntegerField(default=1)
+	status = models.PositiveIntegerField(default=0)
 
+	def publish(self):
+		self.save()
+
+	def __str__(self):
+		return self.applicant + ' '+self.Job_title

@@ -15,9 +15,9 @@
 		<td>{{jo.state}}</td>
 		<td>
        {% if jo.is_active is True %}
-       <a href="{% url 'Home:deactive_jobs' dpk=jo.pk %} "><button>Deactivate</button></a>
+       <a href="{% url 'Home:deactive_jobs' dpk=jo.pk %} "><button class="btn btn-danger">Deactivate</button></a>
        {%else%} 
-       <a href="{% url 'Home:active_jobs' pk=jo.pk %} "><button>Activate</button></a>
+       <a href="{% url 'Home:active_jobs' pk=jo.pk %} "><button class="btn btn-success">Activate</button></a>
        {%endif%} 
 		</td>
 	</tr>

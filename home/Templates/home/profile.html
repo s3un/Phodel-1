@@ -1,0 +1,112 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles %}
+{%block style%}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+{%endblock%}
+{%block content%}
+<div class="row">
+  <div class="container-fluid">
+  <div class="col-md-8 ">
+             <div class="single-member text-center">
+             <div class="team-heading">
+               <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+             </div>
+             <div class="member-img">
+                 <img class="" src="{{info.model_image.url}}">
+             </div>
+             <div class="member-data">
+                 <div class="member-info">
+                     <h2>{{info.last_name}} {{info.first_name}}</h2>
+                     
+                 </div>
+             </div>
+         </div>
+            <div class="text-center">
+             <div class="boxs team-heading1">
+              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <label >CAREER SUMMARY</label>
+             </div>
+             <div class="boxs  member-data">
+                 <div class="member-info" >
+                <p>{{info.career_summary}}</p>
+
+                 </div>
+             </div>
+         </div>
+            <div class="text-center">
+             <div class="boxs team-heading1">
+              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <label >GALLERY</label>
+             </div>
+             <div class=" boxs member-data">
+                <div class="member-info">
+                  <div class="container-fluid">
+                  {% for img in imge %}
+                  <div class="col-md-4 col-xs-4">
+                      <img class="img-responsive" src="{{img.image.url}}">
+                  </div>
+                  {%endfor%}
+                </div>
+              </div>
+              <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              </div>
+             
+         </div>
+  </div>
+  <div class="col-md-3">
+            <div class="text-center">
+             <div class="boxs team-heading1">
+              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <label >STATISTICS</label>
+             </div>
+             <div class="boxs feature">
+                 <div class=" tab-info" >
+                     <h4 >Height: <span>{{info.height}}</span></h4></div>
+
+                    <div class=" tab-info" ><h4 >Age: <span>{{info.age}}</span></h4></div>
+                    <div class=" tab-info" ><h4 >Weight: <span>{{info.weight}}</span></h4></div>
+                    <div class=" tab-info" ><h4 >Skin Color: <span>{{info.eye_color}}</span></h4></div>
+
+                 
+             </div>
+         </div>
+
+            <div class=" text-center">
+             <div class="boxs team-heading1">
+              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <label >PAST JOBS</label>
+             </div>
+             <div class="  boxs feature ">
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info gallery"> <h4><a href="">View All</a></h4></div>
+             </div>
+         </div>
+
+<div class=" text-center">
+             <div class=" boxs team-heading1">
+              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <label >INTEREST</label>
+             </div>
+             <div class="boxs feature ">
+                      {%for inte in inter%}
+                     <div class=" tab-info" ><h4>{{inte.interests}}</h4></div>
+                      {%endfor %}
+                 
+             </div>
+         </div>
+
+  </div>
+</div>
+</div>
+{% endblock%}

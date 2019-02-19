@@ -1,0 +1,35 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<div class="container-fluid" style="padding-top:70px;" >
+    <div class="row">
+    	{% for mo in modls%}
+      <div class=" col-md-4 col-xs-12">
+          
+          <div class="col-md-12 boxp modelhead">
+            <h5 style="font-family:ocraext; font-size: 20px; padding:7px; ">Name:{{mo.last_name}} {{mo.first_name}} </h5>
+          </div>
+
+          <div class="col-md-12 col-xs-12 modelhead">
+          <div class="col-md-8 col-xs-8">
+            <img class="img-responsive" src="{{mo.model_image.url}}" style="height: 200px; margin-top: 20px;">
+          </div>
+          <div class="col-sm-4 col-xs-4 ">
+            <p style="margin-top:10px;"><a href="profile.html"><span class="glyphicon glyphicon-user"></span> PROFILE</a></p>
+                          <span class="glyphicon glyphicon-star" ></span>
+                          <span class="glyphicon glyphicon-star" ></span>
+                          <span class="glyphicon glyphicon-star" ></span>
+                          <span class="glyphicon glyphicon-star" ></span>
+                     <p>SEX: {{mo.gender}}</p> 
+                     <p>AGE: {{mo.age}}</p> 
+                     <p>HEIGHT:{{mo.height}}feet</p>                      
+                     <p>POINTS</p>
+                     <button type="button" style="background:goldenrod; margin-bottom: 10px;width:100px;" class="btn">HIRE</button>
+          </div>
+          </div>
+      </div>
+      	{% endfor%}
+
+    </div>
+</div>
+{% endblock %}

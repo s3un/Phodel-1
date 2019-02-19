@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from .forms import register, Change_detail
-from .models import CustomUser,Pmodel,Pcompany,Gender
+from .models import CustomUser,Pmodel,Pcompany,Gender,images, interest
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
@@ -16,4 +16,6 @@ admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Pmodel)
 admin.site.register(Pcompany)
 admin.site.register(Gender)
+admin.site.register(images)
+admin.site.register(interest)
 

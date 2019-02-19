@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Job,States,Lga,Gender,Featured_Jobs,Hot_Jobs
+from .models import Job,States,Lga,Gender,Featured_Jobs,Hot_Jobs,Application
 from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
@@ -16,4 +16,5 @@ admin.site.register(Lga, ViewAdmin)
 admin.site.register(Gender)
 admin.site.register(Featured_Jobs)
 admin.site.register(Hot_Jobs)
+admin.site.register(Application)
 

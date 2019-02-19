@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="">
+            <div class="boxs">
+                <div class="job-header">
+                    <p style="color:rgb(248, 248, 248); font-family:ocraext; font-size: 30px; margin-left: 10px;">{{job.Job_title}}</p>
+                </div></div>
+                <div class="boxs">
+                <div class="job-content">
+                    <div>
+                        <h5>Job Location</h5>
+                        <li >{{job.town}} {{job.lga}}, {{job.state}}</li>
+                    </div>
+                    <div>
+                        <h5>Job Description</h5>
+                        <li >{{job.personal_note}} </li>
+                    </div>
+
+                         <div>
+                                <h5>Job Requirement</h5>
+                                <li >{{job.height}}</li>
+                            </div>
+                    <center>
+                         {% if go is True %}
+                         <p>You've Applied before</p>
+                        {% else %}
+                        <a href="{% url 'Home:apply' pk=job.pk %}"><button style="margin-top:20px;" class="btn btn-primary">APPLY</button></a>
+                        {% endif %}
+                    </center>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
