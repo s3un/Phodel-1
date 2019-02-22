@@ -58,7 +58,7 @@
 {% block script%}
 <script>
 $(document).ready(function(){
-  $('.signs').popover({title: "<center><h4 style='color:black'>Sign Up</h4><center>", content: "<a href='{% url 'Home:model_signup' %}' class='btn btn-student btn-lg' role='button'>Model</a> | <a href='{% url 'Home:company_signup' %}' class='btn btn-student btn-lg' role='button'>Seeker</a>", html: true, placement: "auto top"}); 
+  $('.signs').popover({title: "<center><h4 style='color:black'>Sign Up</h4><center>", content: "<a href='{% url 'Home:model_signup' %}' class='btn btn-student btn-lg' role='button'>Model</a> <hr> <a href='{% url 'Home:company_signup' %}' class='btn btn-student btn-lg' role='button'>Seeker</a>", html: true, placement: "auto top"}); 
 });
 </script>     
 {% endblock %}

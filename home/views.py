@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.views import generic
 from .models import Phodel
+import datetime
 from Jobs.models import Job, Hot_Jobs, Featured_Jobs, Application
 from django.contrib.auth.decorators import login_required
 from Jobs.forms import JobModelForm
 from account.models import Pmodel, Pcompany,CustomUser,images,interest
 from django.db.models import Q
+from news.models import News
 # Create your views here.
 def Home(request):
 		template= 'home/index.html'
@@ -42,23 +44,25 @@ def base(request):
 		return render(request, template, context)
 
 @login_required
-def profile(request, pk):
+def profile(request):
 	if request.user.is_model==True:
 		template= 'home/profile.html'
-		profi = CustomUser.objects.get(pk=pk)
+		profi = CustomUser.objects.get(pk=request.user.pk)
 		info = Pmodel.objects.get(user__pk=profi.pk)
 		imge = images.objects.filter(User__pk=info.pk)
 		inter=interest.objects.filter(Users__pk=info.pk)
+		# siz=int(info.model_image.size / 1024)
 		context = {
 		'profi':profi,
 		'info':info,
 		'imge':imge,
 		'inter':inter,
+		# 'siz':siz,
 		}
 		return render(request, template, context)
 	if request.user.is_company==True:
 		template= 'home/Company_profile.html'
-		profi = CustomUser.objects.get(pk=pk)
+		profi = CustomUser.objects.get(pk=request.user.pk)
 		info = Pcompany.objects.get(user__pk=profi.pk)
 		context = {
 		'profi':profi,
@@ -75,14 +79,17 @@ def LoginViews(request):
 		appl= Application.objects.filter(applicant_id=info.pk)
 		hjobs= Hot_Jobs.objects.all()
 		Fjobs= Featured_Jobs.objects.all()
+		news = News.objects.all()
 		job = Job.objects.filter(is_active=True).order_by('-created_date')
-		
+		day=datetime.datetime.now()
 		context = {
 		# 'category': category,
 		'hjobs': hjobs,
 		'Fjobs':Fjobs,
 		'job': job,
-		'appl':appl,		
+		'appl':appl,
+		'day':day,
+		'news':news,		
 		}
 		return render(request, template, context)
 	elif request.user.is_company==True:

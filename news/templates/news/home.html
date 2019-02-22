@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+<h1>this is lagos</h1>
+{% load static%}
+	<link rel="stylesheet" type="text/css" href="{% static "news/style.css" %}">
+{% block head %}
+	<title>news</title>
+{% endblock%}
+
+{% block body%}
+	<div class="heading">
+		<center><h4>HEADLINES</h4></center>
+	</div>
+
+<div class="content">
+	<ul>
+	{% for news in x %}
+		<a href="{% url 'details' id=news.pk %}"><li>{{ news.Title }}</li></a>
+	{% endfor %}	
+</ul>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags%}
+{% block content %}
+<div style="padding-top:70px;">
+<h1>{{ new.Title}}</h1>
+<p>{{new.TextField}}</p>
+
+
+
+<form class="site-form" method="post">
+	{% csrf_token%}
+
+	{{ form|crispy }}
+	<input type="hidden" name="News_Id" value="{{new.pk}}">
+	<button  type="submit" class="buttonb">push</button>
+
+	
+</form>	
+{% for x in comment%}
+		{{x.Name}}
+{% endfor%}	 
+</div>
+{% endblock %}

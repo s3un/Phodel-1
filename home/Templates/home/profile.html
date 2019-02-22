@@ -4,15 +4,16 @@
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
 {%endblock%}
 {%block content%}
-<div class="row">
+<div class="row" style="padding-top:70px;">
   <div class="container-fluid">
   <div class="col-md-8 ">
              <div class="single-member text-center">
              <div class="team-heading">
-               <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+               <a href="{% url 'Home:detail_update' pk=info.pk %}"><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
              </div>
              <div class="member-img">
                  <img class="" src="{{info.model_image.url}}">
+
              </div>
              <div class="member-data">
                  <div class="member-info">
@@ -23,7 +24,7 @@
          </div>
             <div class="text-center">
              <div class="boxs team-heading1">
-              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <a href="{% url 'Home:career' pk=info.pk %}"><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
               <label >CAREER SUMMARY</label>
              </div>
              <div class="boxs  member-data">
@@ -35,17 +36,22 @@
          </div>
             <div class="text-center">
              <div class="boxs team-heading1">
-              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <span style="float: right; color: white; margin: 2%;" ><a href="{% url 'Home:upload_image' %}"><i style="margin-right:15px; color: white;" class="glyphicon glyphicon-plus"></i></a>   </span>
               <label >GALLERY</label>
              </div>
              <div class=" boxs member-data">
                 <div class="member-info">
                   <div class="container-fluid">
+                    <div class="row">
                   {% for img in imge %}
-                  <div class="col-md-4 col-xs-4">
-                      <img class="img-responsive" src="{{img.image.url}}">
+                  <div class="col-md-4 col-xs-6 ">
+                    <div class="w3-display-container">
+                      <a href="{{img.image.url}}"><img class="img-responsive" src="{{img.image.url}}"></a>
+    <a href="{% url 'Home:remove_image' pk=img.pk %}" style=" border:1px solid; border-radius:50px;" class="btn-danger w3-display-topright"><center><i  
+            class=" glyphicon glyphicon-minus"></i></center></a>
+                    </div>
                   </div>
-                  {%endfor%}
+                  {%endfor%}</div>
                 </div>
               </div>
               <div class="gallery"> <h4><a href="">View All</a></h4></div>
@@ -56,18 +62,16 @@
   <div class="col-md-3">
             <div class="text-center">
              <div class="boxs team-heading1">
-              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <a href="{% url 'Home:statistics' pk=info.pk %}"><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
               <label >STATISTICS</label>
              </div>
              <div class="boxs feature">
                  <div class=" tab-info" >
-                     <h4 >Height: <span>{{info.height}}</span></h4></div>
-
+                     <h4>Height: <span>{{info.height}} feet</span></h4></div>
+                     <!--<h4>image size: {{siz}}Kb</h4>-->
                     <div class=" tab-info" ><h4 >Age: <span>{{info.age}}</span></h4></div>
                     <div class=" tab-info" ><h4 >Weight: <span>{{info.weight}}</span></h4></div>
-                    <div class=" tab-info" ><h4 >Skin Color: <span>{{info.eye_color}}</span></h4></div>
-
-                 
+                    <div class=" tab-info" ><h4 >Skin Color: <span>{{info.skin_color}}</span></h4></div>   
              </div>
          </div>
 
@@ -95,12 +99,12 @@
 
 <div class=" text-center">
              <div class=" boxs team-heading1">
-              <a href=""><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <span style="float: right; color: white; margin: 2%;" ><a href="{% url 'Home:interest_add' %}"><i style="margin-right:15px; color: white;" class="glyphicon glyphicon-plus"></i></a> </span>
               <label >INTEREST</label>
              </div>
              <div class="boxs feature ">
                       {%for inte in inter%}
-                     <div class=" tab-info" ><h4>{{inte.interests}}</h4></div>
+                     <div class=" tab-info w3-display-container" ><h4>{{inte.interests}} <a href="{% url 'Home:remove_interest' pk=inte.pk %}" style="right:10px;" class=" w3-display-topright"><i  class="text-danger glyphicon glyphicon-minus"></i></a> </h4></div>
                       {%endfor %}
                  
              </div>

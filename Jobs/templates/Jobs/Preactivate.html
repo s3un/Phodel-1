@@ -1,11 +1,13 @@
 {% extends 'home/base.html'%}
 
 {% block content %}
-<table class="table" style="margin-top:80px;">
-	<tr>
+<div class="table-responsive">
+<table class="table " style="margin-top:80px;">
+	<tr class="btn-warning">
 		<th>Title</th>
 		<th>Lga</th>
 		<th>state</th>
+		<th>Publisher</th>
 		<th>mode</th>
 	</tr>
 	{% for jo in job%}	
@@ -13,6 +15,7 @@
 		<td>{{jo.Job_title}}</td>
 		<td>{{jo.lga}}</td>
 		<td>{{jo.state}}</td>
+		<td>{{jo.Job_author.username}}</td>
 		<td>
        {% if jo.is_active is True %}
        <a href="{% url 'Home:deactive_jobs' dpk=jo.pk %} "><button class="btn btn-danger">Deactivate</button></a>
@@ -23,4 +26,5 @@
 	</tr>
 	{% endfor %}
 </table>
+</div>
 {% endblock %}

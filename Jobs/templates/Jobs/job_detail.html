@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 
 {%block content%}
-<div class="container">
+<div class="container" style="padding-top:70px;">
     <div class="row">
         <div class="col-md-10">
 
@@ -27,7 +27,13 @@
                             </div>
                     <center>
                          {% if go is True %}
-                         <p>You've Applied before</p>
+                              {% if appl.status is 1%}
+                              <h4>Status:<span class="text-success"> You've been Shortlisted</span></h4>
+                              {% elif appl.status is 2%}
+                              <h4>Status:<span class="text-danger"> Your Application has been declined</span></h4>
+                              {% else %}
+                              <h4>Status:<span class="text-info"> Received</span></h4>
+                              {% endif %}
                         {% else %}
                         <a href="{% url 'Home:apply' pk=job.pk %}"><button style="margin-top:20px;" class="btn btn-primary">APPLY</button></a>
                         {% endif %}

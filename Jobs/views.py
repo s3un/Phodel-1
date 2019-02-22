@@ -6,6 +6,7 @@ from .models import Job, Hot_Jobs, Featured_Jobs, Application,Lga,States
 from account.models import Pmodel, Pcompany,CustomUser,images,interest
 from .forms import JobModelForm
 from django.contrib import messages
+
 # Create your views here.
 
 class JobCreateView(CreateView):
@@ -120,11 +121,13 @@ def job_detail(request, pk):
 	job = Job.objects.get(pk=pk)
 	applied=Application.objects.filter(job_id=job.pk, applicant_id=info.pk)
 	if applied.exists():
+		appl=Application.objects.get(job_id=job.pk, applicant_id=info.pk)
 		go=True
 		context= {
 		'job': job,
 		'applied':applied,
-		'go':go
+		'go':go,
+		'appl':appl
 		}
 		return render(request, template, context)
 	else:
@@ -183,7 +186,7 @@ def Check(request, pk,jpk):
 	'job':job,
 	}
 	return render(request,template,context)
-
+#status code 1 is shortlisted
 def set_active(request, pk, jpk):
 	template='Jobs/applications.html'
 	profil = CustomUser.objects.get(pk=request.user.pk)
@@ -201,7 +204,7 @@ def set_active(request, pk, jpk):
 	'profil':profil
 	}
 	return render(request, template, context)
-
+#status code 2 is declined
 def set_deactive(request, pk, jpk):
 	template='Jobs/applications.html'
 	profil = CustomUser.objects.get(pk=request.user.pk)

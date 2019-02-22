@@ -1,5 +1,5 @@
 {% extends 'home/signbase.html'%}
-
+{% load static from staticfiles%}
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -20,10 +20,10 @@
       </form>
       <center>
        <h4 style="margin-top:10px; color:white">OR SignUp with</h4>
-      <button style="margin-bottom:10px;" type="button" class="btn btn-default"><img src="img/search.png">GOOGLE</button>
+      <button style="margin-bottom:10px;" type="button" class="btn btn-default"><img src="{% static 'img/search.png' %} ">GOOGLE</button>
     </center>
     </div>
     </div>
-    <div class="col-md-4 col-xs-1+"></div>
+    <div class="col-md-4 col-xs-1"></div>
   </div>
 {% endblock %}

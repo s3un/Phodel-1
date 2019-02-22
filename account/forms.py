@@ -4,7 +4,7 @@ from django import forms
 from django.db import transaction
 from django.forms.utils import ValidationError
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Pmodel,CustomUser,Pcompany,Gender
+from .models import Pmodel,CustomUser,Pcompany,Gender,images,interest
 class ModelSignUpForm(UserCreationForm):
 	first_name = forms.CharField(max_length=30, required=True, help_text='Enter your Firstname')
 	last_name = forms.CharField(max_length=30, required=True, help_text='Enter your Lastname')
@@ -67,3 +67,22 @@ class Change_detail(UserChangeForm):
 	class Meta:
 		model = CustomUser
 		fields = ('username','email', 'is_model', 'is_company')
+class ImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = images
+        fields = ['User',
+        		'image',
+        		 ]
+        widgets={
+        'User':forms.HiddenInput()
+        }
+
+class InterestForm(forms.ModelForm):
+    class Meta:
+        model = interest
+        fields = ['Users',
+        		'interests',
+        		 ]
+        widgets={
+        'Users':forms.HiddenInput()
+        }    

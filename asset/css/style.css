@@ -1,6 +1,8 @@
 p, h1,h2,h3,h4,h5,h6 {
   font-variant: small-caps;
 }
+.w3-display-topright{position:absolute;right:2px;top:0}
+.w3-display-container{position:relative}
 .signupbox  {
     border: 1px solid black;
     background: black;

@@ -1,0 +1,13 @@
+{% extends 'home/base.html'%}
+{% load crispy_forms_tags%}
+{% block content%}
+<div class="col-md-12" style="padding-top:70px">
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<input type="hidden" name="Users" value="{{info.pk}}">
+		{{form.interests|as_crispy_field}}
+		<center><input type="submit" Value="Upload"></center>
+	</form>
+</div>
+
+{% endblock%}

@@ -30,11 +30,11 @@ class Pmodel(models.Model):
 	last_name = models.CharField(max_length=20, default='Name')
 	tag = models.CharField(max_length=10, default='Model')
 	gender = models.ForeignKey(Gender, on_delete=models.CASCADE, default=True)
-	height = models.CharField(max_length=50, blank=True)
+	height = models.PositiveIntegerField(blank=True, null=True)
 	email = models.EmailField()
 	career_summary = models.TextField(blank=True)
 	weight = models.CharField(max_length=50, blank=True)
-	eye_color=models.CharField(max_length=50, blank=True)
+	skin_color=models.CharField(max_length=50, blank=True)
 	age = models.PositiveIntegerField(blank=True, default=1)
 	model_image = models.ImageField(upload_to="Users/Model", default='Users/Model/user.png', blank=True)
 
