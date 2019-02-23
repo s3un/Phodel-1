@@ -55,19 +55,19 @@
       <li><a href="">FAQ</a></li>      
     </ul>
     {% if  user.is_authenticated%}
-    <div class="navbar-form navbar-right">
-            <a style="color:black; font-size: border:1px solid black; padding:15%; "
+    <center><div class="navbar-form navbar-right" style="margin-top:12px;">
+            <a style="color:black;  border:2px dashed black; padding:10px; "
       href="{% url 'Home:logout' %}">Logout</a>
     </div>
     <form class="navbar-form  navbar-right">
       <p>Welcome <a href="{% url 'Home:profile' %}">{{user.username}}
        <!--{%if user.is_model is True%}<img style="width:38px; height:35px; border:3px dashed; border-radius:70%" src="{{pmod.model_image.url}}">{% endif%}--></a></p>
-      </form>
+      </form></center>
            {% else %}
-      <form class="navbar-right">
-      <a href="{% url 'Home:login'%}"><button style=" background:rgb(0, 0, 0);" type="button" class="btn btn-primary">
-        Sign in <span class="glyphicon glyphicon-user"></span></button></a>
-      </form>
+      <form class="navbar-right" style="margin-top:14px; margin-bottom:14px;">
+           <center> <a style="color:black;  border:2px dashed black; padding:10px; "
+      href="{% url 'Home:login'%}">Sign In</a></center></form>
+
     
     {% endif%}
   </div>

@@ -24,20 +24,18 @@
           </center>  
           <center>
               <div class="buttons">
-                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; font-size: 20px; padding:10px;" type="button" role="button" >MODELS</a>
-                  <a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; font-size: 20px; padding:10px;" type="button" role="button">
+                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:2px dashed black; font-size: 20px; padding:10px;" type="button" role="button" >MODELS</a>
+                  <a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:2px dashed black; font-size: 20px; padding:10px;" type="button" role="button">
                    SEEKERS</a>
               </div>
           </center>
       </div>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="supportbox">
+<div class="">
+    <div class="supportbox btn-warning">
       <div class="row">
-        <div class="col-md-12">
-          <center><h3>SUPPORTED FIRMS</h3></center>
-        </div>
+          <center><h2>Supported Firms</h2></center>
       </div>
     </div>
 </div>
@@ -76,7 +74,7 @@
               <div class="col-md-12">
                 <div class="row">
                 <div class="col-md-4 col-xs-2"></div>
-               <center> <div class="col-md-4 col-xs-8 "><h3 style=" border: 1px dashed #eeb700; padding:5%; ">MODELS</h3></div></center>
+               <center> <div class="col-md-4 col-xs-8 "><h3 style=" border: 2px dashed #eeb700; padding:5%; ">MODELS</h3></div></center>
                 <div class="col-md-4 col-xs-2"></div></div>
                   <p class="textph">Phodel provides a platform for models to connect and showcase themselves, we operate to make the least model be known.
                 </p>
@@ -87,7 +85,7 @@
               <div class="col-md-12">
                 <div class="row">
                 <div class="col-md-4 col-xs-2"></div>
-                <center><div class="col-md-4 col-xs-8 "><h3 style="border: 1px dashed #eeb700; padding:5%; ">SEEKERS</h3></div></center>
+                <center><div class="col-md-4 col-xs-8 "><h3 style="border: 2px dashed #eeb700; padding:5%; ">SEEKERS</h3></div></center>
                 <div class="col-md-4 col-xs-2"></div></div>
                   <p>Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
                 </p>
@@ -96,9 +94,12 @@
         </div>
   </div>
 <br>
-<div class="container app">
-  <CENTER><p style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120); border:1px dashed black;">TOP MODELS</p></CENTER>
-  <center>
+<div class="container app" >
+  <div class="row btn-warning">
+    
+   <center><h2  style="color:black;">Top Models</h2></center>
+  
+  </div>
     <div class="row">
       <div class="col-xs-11 col-md-10 col-centered">
         <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
@@ -185,20 +186,21 @@
       <div class="row">
         <div class="col-md-12">
             <div class="buttons2">
-                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%;  border:1px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt" >MODELS</a>
-                  <a  href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%; border:1px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt">
+                  <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%;  border:2px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt" >MODELS</a>
+                  <a  href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style=" color:white; margin:4%; border:2px dashed #eeb700; font-size: 20px; padding:10px;" type="button" role="button" class="bt">
                    SEEKERS</a>
               </div>
         </div>
       </div> 
     </center>
   </div>
-<div class="container-fluid">
-  <div class="testimonial">
-    <div class="row" style="padding:1%;">
-      <div class="col-md-12">
-        <div class="theader"><center><h2 style="color:black;">Testimonial</h2></center></div>
-        <div class="col-md-6 tfull ">
+<div class="row" style="background-color:#eeeeee">
+  <div class=" theader Testimonial">
+<div class=" row btn-warning" style=""><center><h2 style="color:black;">Testimonial</h2></center></div>    
+    <div class="theader container-fluid" style="">
+        
+      <div class="col-md-12">        
+        <div class="col-md-3 tfull"style="background-color:#eeeeee;" >
             <div class="col-md-12 just">
             <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
             <center><h3>ADAMS TEMIDIRE</h3></center>
@@ -212,7 +214,33 @@
             </div>
         </div>
 
-        <div class="col-md-6 tfull ">
+        <div class="col-md-3 tfull "style="background-color:#eeeeee;">
+            <div class="col-md-12 just">
+              <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+               <center><h3>ADAMS TEMIDIRE</h3></center>
+               <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+               <div class="col-md-12 ">
+                   <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
+                    no charges, had to make a choice out of so many,
+                    my office wasn't crowded with models</q>
+                   </p>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-3 tfull "style="background-color:#eeeeee;">
+            <div class="col-md-12 just">
+              <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+               <center><h3>ADAMS TEMIDIRE</h3></center>
+               <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+               <div class="col-md-12 ">
+                   <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
+                    no charges, had to make a choice out of so many,
+                    my office wasn't crowded with models</q>
+                   </p>
+               </div>
+            </div>
+        </div>
+        <div class="col-md-3 tfull "style="background-color:#eeeeee;">
             <div class="col-md-12 just">
               <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
                <center><h3>ADAMS TEMIDIRE</h3></center>

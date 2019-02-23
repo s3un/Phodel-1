@@ -106,6 +106,9 @@ p, h1,h2,h3,h4,h5,h6 {
   height: 400px;
   background: rgb(255, 255, 255);
 }
+.app h2{
+  font-family: OCRAEXT;
+}
 
 /*homewall*/
 .homebox  {
@@ -340,8 +343,7 @@ cursor: pointer;
 .theader  {
 /*  background: goldenrod;
   box-shadow:  rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;*/
-  border: 1px dashed black;
-  margin: 2%;
+  margin-top: 2%;
 }
 
 .timage {
@@ -396,13 +398,14 @@ position: relative;
 
 .supportbox {
   /*background: #eeb700;*/
-  border: 1px dashed black;
+  /*border: 2px dashed black;*/
 
   margin-top: 40px;
   /*box-shadow:  rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;*/
 }
-.supportbox h3{
+.supportbox h2{
   color:black;
+  font-family: OCRAEXT;
 }
 .modelback  {
   margin-top: 50px;

@@ -6,6 +6,7 @@ from django.forms.utils import ValidationError
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Pmodel,CustomUser,Pcompany,Gender,images,interest
 class ModelSignUpForm(UserCreationForm):
+	username=forms.CharField(min_length=6,max_length=30, required=True, help_text='Username must be 6 letters or more')
 	first_name = forms.CharField(max_length=30, required=True, help_text='Enter your Firstname')
 	last_name = forms.CharField(max_length=30, required=True, help_text='Enter your Lastname')
 	email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')

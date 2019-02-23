@@ -12,7 +12,7 @@
                <a href="{% url 'Home:detail_update' pk=info.pk %}"><span style="float: right; color: white; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
              </div>
              <div class="member-img">
-                 <img class="" src="{{info.model_image.url}}">
+                 <a href="{{info.model_image.url}}"><img class="" src="{{info.model_image.url}}"></a>
 
              </div>
              <div class="member-data">
@@ -44,10 +44,10 @@
                   <div class="container-fluid">
                     <div class="row">
                   {% for img in imge %}
-                  <div class="col-md-4 col-xs-6 ">
-                    <div class="w3-display-container">
-                      <a href="{{img.image.url}}"><img class="img-responsive" src="{{img.image.url}}"></a>
-    <a href="{% url 'Home:remove_image' pk=img.pk %}" style=" border:1px solid; border-radius:50px;" class="btn-danger w3-display-topright"><center><i  
+                  <div class="col-md-3 col-xs-6 ">
+                    <div class="w3-display-container thumbnail">
+                      <a href="{{img.image.url}}" class=""><img class="img-responsive " style="width:150px; height:150px;" src="{{img.image.url}}"></a>
+    <a href="{% url 'Home:remove_image' pk=img.pk %}" style=" border:1px solid; right:-1px; border-radius:50px;" class="btn-danger w3-display-topright"><center><i  
             class=" glyphicon glyphicon-minus"></i></center></a>
                     </div>
                   </div>
@@ -106,7 +106,6 @@
                       {%for inte in inter%}
                      <div class=" tab-info w3-display-container" ><h4>{{inte.interests}} <a href="{% url 'Home:remove_interest' pk=inte.pk %}" style="right:10px;" class=" w3-display-topright"><i  class="text-danger glyphicon glyphicon-minus"></i></a> </h4></div>
                       {%endfor %}
-                 
              </div>
          </div>
 
