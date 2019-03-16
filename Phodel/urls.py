@@ -23,6 +23,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('home.urls')),
+    url(r'^search/', include('haystack.urls')),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+
 ]
 urlpatterns+=staticfiles_urlpatterns()
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

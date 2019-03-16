@@ -46,8 +46,8 @@
                   {% for img in imge %}
                   <div class="col-md-3 col-xs-6 ">
                     <div class="w3-display-container thumbnail">
-                      <a href="{{img.image.url}}" class=""><img class="img-responsive " style="width:150px; height:150px;" src="{{img.image.url}}"></a>
-    <a href="{% url 'Home:remove_image' pk=img.pk %}" style=" border:1px solid; right:-1px; border-radius:50px;" class="btn-danger w3-display-topright"><center><i  
+                      <a href="{{img.image.url}}"><img class="img-responsive " style="width:150px; height:150px;" src="{{img.image.url}}"></a>
+    <a  href="#myModal" data-img="{{img.image.url}}" data-rem="{% url 'Home:remove_image' pk=img.pk %}" data-toggle="modal" data-target="" style=" border:1px solid; right:-1px; border-radius:50px;" class="img-show btn-danger w3-display-topright"><center><i  
             class=" glyphicon glyphicon-minus"></i></center></a>
                     </div>
                   </div>
@@ -112,4 +112,40 @@
   </div>
 </div>
 </div>
+{% endblock%}
+{% block javascripts %}
+<script type="text/javascript">
+  $('.img-show').on('click', function (e) {
+    var imgs = $(this).data('img');
+    var rems = $(this).data('rem');
+    $('#mo_image').attr('src', imgs);
+    $('#image_rem').attr('href', rems);
+  });
+</script>
+  
+{%endblock%}
+
+{% block modal%}
+<div class="col-md-12">
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header btn-danger">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Image</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete ?</p>
+        <img class="img-responsive" id="mo_image">
+      </div>
+      <div class="modal-footer">
+        <a id="image_rem" href=""><button class="btn btn-danger">Delete</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div></div>
 {% endblock%}

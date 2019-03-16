@@ -1,5 +1,5 @@
 {% extends 'home/base.html'%}
-
+{% load ratings %}
 {% block content %}
 <div class="container-fluid" style="padding-top:70px;" >
     <div class="row">
@@ -16,15 +16,12 @@
           </div>
           <div class="col-sm-4 col-xs-4 ">
             <p style="margin-top:10px;"><a href="profile.html"><span class="glyphicon glyphicon-user"></span> PROFILE</a></p>
-                          <span class="glyphicon glyphicon-star" ></span>
-                          <span class="glyphicon glyphicon-star" ></span>
-                          <span class="glyphicon glyphicon-star" ></span>
-                          <span class="glyphicon glyphicon-star" ></span>
+                    {% ratings mo %}
                      <p>SEX: {{mo.gender}}</p> 
                      <p>AGE: {{mo.age}}</p> 
                      <p>HEIGHT:{{mo.height}}feet</p>                      
                      <p>POINTS</p>
-                     <button type="button" style="background:goldenrod; margin-bottom: 10px;width:100px;" class="btn">HIRE</button>
+                     <a href="{% url 'Home:offer' pk=mo.pk %}"><button type="button" style=" margin: 10px 0 10px 0;width:100px;" class=" buttons"><span>HIRE</span></button></a>
           </div>
           </div>
       </div>

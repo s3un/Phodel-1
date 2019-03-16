@@ -1,0 +1,29 @@
+                  
+                  {% for jo in job%}
+                  <div class="boxs">
+                  <div class="tab-info">
+                     <a href="{% url 'Home:jobdetails' pk=jo.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{jo.Job_title}}</h4></a>
+                     <h6>{{jo.Job_author.username}}</h6>
+
+                     <h6>Published:<i class="glyphicon glyphicon-time"></i> {{day|timesince:jo.published_date}} ago</h6>
+                   <h4>{{jo.lga}}, {{jo.state}}</h4>
+                   <p>{{jo.personal_note}}</p>
+                  </div>
+                  
+                </div>
+                {% endfor %}
+<center>
+  <ul class=" col-md-12 pagination pagy">
+      {% if job.has_previous %}
+        <li><a href="?page=1 #info">&laquo;</a></li>
+        <li><a href="?page={{ job.previous_page_number }}">prev</a></li>
+      {% endif %}
+      {% for num in job.paginator.page_range %}
+        <li class="{% if job.number is num %}active{%endif%}"><a href="?page={{num}}" >{{num}}</a></li>
+      {% endfor %}
+      {% if job.has_next %}
+        <li><a href="?page={{ job.next_page_number }}">next</a></li>
+        <li><a href="?page={{ job.paginator.num_pages }}"> &raquo;</a></li>
+      {% endif %}
+  </ul>
+</center>

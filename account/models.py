@@ -43,6 +43,9 @@ class Pmodel(models.Model):
 
 	def __str__(self):
 		return self.user.username
+		
+	def __unicode__(self):
+		return "first_name: {}" .format(self.first_name)
 
 class Pcompany(models.Model):
 	user = models.OneToOneField('CustomUser',on_delete=models.CASCADE)

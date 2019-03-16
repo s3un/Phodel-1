@@ -14,7 +14,7 @@
                 <div class="job-content">
                     <div>
                         <h5>Job Location</h5>
-                        <li >{{job.town}} {{job.lga}}, {{job.state}}</li>
+                        <li >{{job.street_address}}, {{job.town}}, {{job.lga}}, {{job.state}}</li>
                     </div>
                     <div>
                         <h5>Job Description</h5>
@@ -23,7 +23,16 @@
 
                          <div>
                                 <h5>Job Requirement</h5>
-                                <li >{{job.height}}</li>
+                                <li >Height: {{job.height}}Ft</li>
+                                <li>Gender:
+                                  {%for g in job.gender.all%}
+                                  {{g}}
+                                  {%endfor%}
+                                </li>
+                            </div>
+                            <div>
+                              <h5>Renumeration</h5>
+                              <li>Payout: #{{job.payout}}</li>
                             </div>
                     <center>
                          {% if go is True %}

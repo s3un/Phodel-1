@@ -1,0 +1,11 @@
+{% if status is 1 %}
+<h3>Hi, {{applicant}}</h3>
+<p>Good day, We write to notify you that your application for {{Job_title}} has been shortlisted by {{Job_author}}. Other neccessary information would be sent to you by them</p>
+<h5>Best Regards</h5>
+<h5>Phodel Team.</h5>
+{% elif status is 2%}
+<h3>Hi, {{applicant}}</h3>
+<p>Good day, We write to notify you that your application for {{Job_title}} has been rejected by {{Job_author}}</p>
+<h5>Best Regards</h5>
+<h5>Phodel Team.</h5>
+{% endif %}

@@ -16,5 +16,9 @@ urlpatterns = [
     url(r'^Add-Interest/$', views.add_interest.as_view(), name='interest_add'),
     url(r'^Remove/(?P<pk>\d+)/$', views.Remove_image, name='remove_image'),
     url(r'^Remove-interest/(?P<pk>\d+)/$', views.Remove_interest, name='remove_interest'), 
-    url(r'^Update-details/(?P<pk>\d+)/$', views.ImageUpdate.as_view(), name='detail_update'),    
+    url(r'^Update-details/(?P<pk>\d+)/$', views.ImageUpdate.as_view(), name='detail_update'),
+    url(r'^password_reset/$',password_reset,{'template_name':'account/password_reset_form.html'}, name='password_reset'),
+    url(r'^password_reset/done/$', auth_views.password_reset_done, {'template_name':'account/password_reset_done.html'}, name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',auth_views.password_reset_confirm,{'template_name':'account/password_reset_confirm.html'}, name='password_reset_confirm'),
+    url(r'^reset/done/$', auth_views.password_reset_complete,{'template_name':'account/password_reset_complete.html'}, name='password_reset_complete'),    
 ]

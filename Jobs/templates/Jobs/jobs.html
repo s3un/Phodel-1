@@ -1,7 +1,32 @@
 {% extends 'home/base.html'%}
-
+{% block style %}
+<style type="text/css">
+  .pagy li>a {
+    color: #15150b;
+  } 
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus{
+    z-index: 3;
+    color:#70451c;
+    background-color:#15150b ;
+    border-color:#15150b ;
+  }
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+    z-index: 3;
+    color:#fff;
+    background-color:#70451c ;
+    border-color:#70451c ;
+}
+</style>
+{% endblock %}
 {% block content %}
-<br><br><br>
 <div class="homebox"></div>
 <br>
 <br>
@@ -11,7 +36,7 @@
           <div class="col-md-12">
             <div class="boxs">
             <div class="singletab">
-                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Gig Applications</h3>
+                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Gig Applications <span class="badge" style="float: right; color: white; margin: 5px; font-size:18px;">{{applcount}}</span></h3>
               </div></div>
               <div class="boxs feature">
                 {% for ap in appl%}
@@ -23,41 +48,52 @@
                   {% elif ap.status is 2%}
                   <h4>Status:<span class="text-danger">Declined</span></h4>
                   {% else %}
-                  <h4>Status:<span class="text-info">Received</span></h4>
+                  <h6>Status:<span class="text-info"> Received</span></h6>
                   {% endif %}
               </div>
               {% endfor %}
+              {% if applcount > 1 %}
+                <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              {% endif %}
             </div>
               
         </div>
-        <div class="col-md-12">
+        <div id="info"></div>
+        <div class="col-md-12" id="">
             <div class="boxs">
                 <div class="singletab">
                     <P style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >New Gigs</P>
                   </div>
             </div>
-                  {% for jo in job%}
-                  <div class="boxs">
-                  <div class="tab-info">
-                     <a href="{% url 'Home:jobdetails' pk=jo.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{jo.Job_title}}</h4></a>
-                     <h6>{{jo.Job_author.username}}</h6>
-
-                     <h6>Published: {{day|timesince:jo.published_date}} ago</h6>
-                   <h4>{{jo.lga}}, {{jo.state}}</h4>
-                   <p>{{jo.personal_note}}</p>
-                  </div>
-                </div>
-                {% endfor %}
-                      <center><ul class="pagination pagination-md ">
-                          <li class="active"><a  href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                        </ul></center>
+            {% include 'Jobs/job_pages.html'%}
         </div>
     </div>
     <div class="col-md-3">
+
+          <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <h3 style="color:#fff; font-family:ocraext; font-size: 30px; " >Gig Offers <span class="badge" style="float: right; color: white; margin: 5px; font-size:18px;">{{cont}}</span></h3>
+
+              </div>
+
+            </div>
+              <div class="boxs feature">
+                {% for job in offer%}
+              <div class="tab-info">
+                  <a href="{% url 'Home:job_offer' pk=job.job.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{job.job.Job_title}}</h4></a>
+                  <h6>Published: {{job.job.created_date.date}}</h6>
+                  <h4>{{job.job.lga}}, {{job.job.state}}</h4>
+                  <p>{{job.job.personal_note}}</p>
+              </div>
+              {% endfor %}
+              {% if cont > 1%}
+              <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              {% endif %}
+            </div>
+              
+        </div>
+
           <div class="col-md-12">
             <div class="boxs">
             <div class="singletab">

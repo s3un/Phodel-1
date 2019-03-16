@@ -1,5 +1,11 @@
-p, h1,h2,h3,h4,h5,h6 {
+p, i, h1,h2,h3,h4,h5,h6 {
   font-variant: small-caps;
+}
+.conte{
+  scroll-behavior: smooth;
+}
+.pagy a {
+  color: black;
 }
 .w3-display-topright{position:absolute;right:2px;top:0}
 .w3-display-container{position:relative}
@@ -44,7 +50,7 @@ p, h1,h2,h3,h4,h5,h6 {
   position: relative;
  /* top: 30px;*/
   background-image: url('/static/img/allwhite.jpg');
-  height: 500px;
+  height: 675px;
   width: 100%;
   background-size: cover;
 }
@@ -52,15 +58,20 @@ p, h1,h2,h3,h4,h5,h6 {
 .centered {
   position: absolute;
   bottom: 500px;
-  top: 60px;
-}
-
-.centered  {
-  font-size: 70px;
+  top: 100px;
   font-family:  ocraext;
- }
+  align-items: center;
 
+}
+.learn {
+  margin-top: 10%;
 
+}
+.learn a{
+  font-size: 18px;
+  font-family: ocraext;
+  color: black;
+}
 .clogo  {
   height: 150px;
   background: rgb(255, 255, 255);
@@ -263,22 +274,82 @@ cursor: pointer;
   font-weight: bold;
 }
 
-.buttons  {
+.buttons{
+  color:black;  border:2px dashed black; padding:10px; background:none;
+  border-radius: 20px;
   margin-top: 50px;
-
+  width: 200px;
 }
+
+.buttons span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.buttons span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.buttons:hover span {
+  padding-right: 25px;
+}
+
+.buttons:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 .buttons2  {
   margin-top: 10px;
   margin-bottom: 50px;
 }
 .buttons2 a:hover{
-  background-color: black;
+  color: white;
   text-decoration: none;
 }
-.buttons :hover{
-  transform: scale(1.1);
+
+.logs{
+  color:black;  border:2px dashed black; padding:10px; background:none;
+  border-radius: 20px;
+  margin-top: 0px;
+  width: 100px;
 }
 
+.logs span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.logs span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.logs:hover span {
+  padding-right: 25px;
+}
+
+.logs:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 
  .singletab {
@@ -340,6 +411,39 @@ cursor: pointer;
   margin-bottom: 10px;
 }
 
+.butto{
+  color:white;  border:2px dashed #eeb700; padding:10px; background:none;
+  border-radius: 20px;
+}
+.butto span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.butto span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  
+}
+
+.butto:hover span {
+  padding-right: 25px;
+}
+
+.butto:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.butt{
+  color:white;  padding:5px; background:none;
+}
 .theader  {
 /*  background: goldenrod;
   box-shadow:  rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;*/
@@ -452,5 +556,8 @@ position: relative;
   background: #252525;
   background-size: cover;
   color: white;
+}
+.linka{
+   color:white;  border:2px dashed #eeb700; padding:10px; background:none; margin-bottom: 50px; 
 }
 

@@ -2,7 +2,6 @@
 {% load static from staticfiles%}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row"></div>
 <div class="col-md-7">
 <div class="container-fluid">
     <div class="row">
@@ -55,13 +54,14 @@
     </div>
 </div>
 </div>
-<div style="margin-top:50px;" class="col-sm-5">
+<div style="margin-top:50px;" class="col-md-5 ">
+                  
                    <div class="boxs">
                        <div class="singletab">
                            <h3 style="color:#fff; font-family:ocraext; font-size: 30px; margin-left: 10px;" >Post Jobs</h3>
                          </div></div>
                          <div class="boxs feature">
-                             <form action="." method="post" id="jobsform" data-lga-url="{% url 'Home:load_lga' %}" novalidate>
+                             <form action="{% url 'Home:company' %}" id="jobsform" method="post" novalidate>
                                 {% csrf_token %}
                                    <div class="form-group">
                                        {{form.Job_title|as_crispy_field}}
@@ -70,21 +70,21 @@
     <input type="hidden" name="Job_author" value="{{request.user.pk}}">
 </div>
               <label class="tab-info">Job Location</label>
-                                    <div class="form-group">
-                                            
-                                            <div class="col-md-6">
+                                    <div class="form-group" id="stateform" data-lga-url="{% url 'Home:load_lga' %}">
+                                            <div class="col-md-8 col-xs-8">
+                                              {{form.street_address|as_crispy_field}}
+                                            </div>                                                  
+                                            <div class="col-md-4 col-xs-4">
+                                              {{form.town|as_crispy_field}}
+                                            </div> 
+                                            <div class="col-md-6 col-xs-6">
                                               {{form.state|as_crispy_field}}
                                             </div>
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-xs-6">
                                               {{form.lga|as_crispy_field}}
                                             </div>
-                                            <div class="col-md-4">
-                                              {{form.town|as_crispy_field}}
-                                            </div>                                                  
-                                            <div class="col-md-8">
-                                              {{form.street_address|as_crispy_field}}
-                                            </div>                                                
+                                               
                                             
                                     </div>
                                      
@@ -104,13 +104,20 @@
                                         <div class="form-group">
                                           {{form.personal_note|as_crispy_field}}
                                         </div>
-                                       
-                                        <center><button style="margin-bottom:20px; background:goldenrod;" type="submit" class="btn">SUBMIT</button></center>
+                                    <label class="tab-info">Renumeration</label>
+                                        <div class="form-group">
+                                          {{form.payout|as_crispy_field}}
+                                        </div>
+                                        <div class="alert alert-success fade in complete_box" style="display:none"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><h4 class="complete"></h4></div>
+                                        <center><button style="margin-bottom:20px;"  type="submit" class="buttons"><span>SUBMIT</span></button></center>
                               </form>
+
                           </div>
                     
 </div>
-<div class="container app">
+
+<div class="col-md-12">
+  <div class="container app ">
         <CENTER><P style="font-size:30px;  font-family: ocraext; font-weight: bold; text-shadow: 2px 2px rgb(121, 120, 120);">TOP PICKS</P></CENTER>
         <center>
           <div class="row">
@@ -185,14 +192,16 @@
             </div>
           </div>
         </center>  
-        </div> 
+        </div>
+</div>
+
 
 {% endblock %}
 {% block javascripts %}
   <script src="{% static 'jq/jquery.js' %}"></script>
   <script>
     $("#id_state").change(function () {
-      var url = $("#jobsform").attr("data-lga-url");  // get the url of the `load_cities` view
+      var url = $("#stateform").attr("data-lga-url");  // get the url of the `load_cities` view
       var stateID = $(this).val();  // get the selected country ID from the HTML input
       $.ajax({                       // initialize an AJAX request
         url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
@@ -204,6 +213,20 @@
         }
       });
 
+    });
+    var frm=$("#jobsform");
+    frm.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          $('.complete_box').show()
+          $('.complete').html(data)
+
+        }
+      });
+      return false;
     });
   </script>
 {% endblock %}

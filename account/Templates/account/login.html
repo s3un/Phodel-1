@@ -18,7 +18,7 @@
     <div class=" col-md-4 col-xs-10 seekersbox">
 
       <center><h2 style="color:white;">Sign in</h2></center>
-      <div style="border: 2px dashed white; padding:2%; margin-bottom:5%;">
+      <div style="border: 2px dashed #eeb700; padding:2%; margin-bottom:5%;">
       <form method="post" novalidate >
         {% csrf_token %}
         {{form.non_field_errors}}
@@ -36,17 +36,17 @@
              <input type="checkbox" class="form-check-input" id="exampleCheck1">
              <label style="color:white;" class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <center><button type="submit" class="btn btn-danger" style="width:90%">Log in</button></center>
+        <center><button type="submit" class="butto" style="width:90%"><span>Log in</span></button></center>
       </form>
       <div class="row">
-         <div class="col-md-6 col-xs-7"> <a href="newsigning.html"><center><div  class="passwordreset">Forgot password?</div></center></a></div>
+         <div class="col-md-6 col-xs-7 "> <a href="{% url 'Home:password_reset' %}"><center><div style="margin-top:12px;"  class="passwordreset butt">Forgot password?</div></center></a></div>
          <div class="col-md-2 col-xs-1"></div>
-         <div class="col-md-4 col-xs-4"> <a href="#" class="signs">SIGN UP</a></div>
+         <div class="col-md-4 col-xs-4"> <a href="#" class="signs"><center><div style="margin-top:12px;" class="butt"> Sign Up</div></center></a></div>
       </div> 
         <center><div style="font-weight:bold; color:white; margin-top:5px;" class="orset"> OR</div></center>
         <center><div style="color:white; font-weight:bold; margin-top:5px;" class="orset"> SIGN IN WITH...</div></center>
-     <center> <div style="margin-top:5px; padding: 10px;" class="buttons">
-        <button type="button" class="btn btn-default" style="font-weight:bold;"><img src="{% static 'img/search.png' %}">GOOGLE</button>
+     <center> <div style="margin-top:5px; padding: 10px;" class="">
+        <button style=""  type="submit" class="butto"><img src="{% static 'img/search.png' %}"> GOOGLE</button>
        </div></center>  
       </div>
       <center></center>

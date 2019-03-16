@@ -1,0 +1,4 @@
+<h3>Hi, {{applicant}}</h3>
+<p>Good day, We write to notify you that your application for {{Job_title}} has been sent to {{Job_author}} successfully.</p>
+<h6>Best Regards</h6>
+<h5>Phodel Team.</h5>

@@ -1,0 +1,15 @@
+{% extends 'home/signbase.html'%}
+{%load static from staticfiles %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-4 col-xs-1"></div>
+    <div class=" col-md-4 col-xs-10 seekersbox">
+    	<center><img class="img-responsive" style="width 150px; height:150px" src="{% static 'icons/paper-plane.svg' %}"></center>
+    	<center><h6 style="color:white;">Your application as been sent to {{job.Job_author.username}} successfully.</h6>
+    	<p>Click Button below to return to dashboard</p>
+    	<button style="margin-bottom:20px;"  type="submit" class="butto">DASHBOARD</button></center>
+    </div>
+    <div class="col-md-4 col-xs-1"></div>    
+  </div>
+
+{% endblock %}

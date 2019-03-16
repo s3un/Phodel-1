@@ -1,0 +1,11 @@
+<form action="/search" method="get">
+        <input name="q" type="text" />
+        <input type="submit" />
+ </form>
+{% for result in page.object_list %}
+           {{ result.object.title }}
+           {{ result.object.description }}
+        {{ result.object.created_on }}
+        {% empty %}           
+             No results found.
+{% endfor %}

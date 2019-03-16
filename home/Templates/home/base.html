@@ -5,8 +5,10 @@
     <title>Phodel</title>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'star-ratings/css/star-ratings.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+  <script src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
   <script src="{% static 'jq/jquery.js' %}"></script> 
 {%block style%}
 
@@ -14,7 +16,7 @@
 </head>
 
 
-<body >
+<body>
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -36,44 +38,43 @@
     <ul class="nav navbar-nav">
       {% if user.is_authenticated and user.is_model is True %}
       {% elif user.is_authenticated and user.is_company is True %}
-      <li><a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}">DASHBOARD</a></li>
+      <li class="{% if request.path == '/Job/company/' %} active {% endif%}"><a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}">DASHBOARD</a></li>
       {%else%}
      <li><a href="{% url 'Home:login'%}">SEEKERS</a></li>      
       {% endif %}
       {% if user.is_authenticated and user.is_company is False and user.is_model is False %}
-      <li><a href="{% url 'Home:preactivate'%}">Job Activate</a></li>
+      <li class="{% if request.path == '/Job/active/' %} active {% endif%}"><a href="{% url 'Home:preactivate'%}">Job Activate</a></li>
       {% endif %}
       {% if user.is_authenticated and user.is_model is True %}
-      <li><a href="{% url 'Home:homeView'%}">DASHBOARD</a></li>
+      <li class="{% if request.path == '/home/' %} active {% endif%}"><a href="{% url 'Home:homeView'%}" >DASHBOARD</a></li>
       {% endif%}
 
       {% if user.is_authenticated and user.is_model is True %}
       {% else %}
-      <li><a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}">MODELS</a></li>
+      <li class="{% if request.path == '/models/' %} active {% endif%}"><a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}">MODELS</a></li>
       {% endif%}
       <li><a href="contact.html">CONTACT</a></li>
       <li><a href="">FAQ</a></li>      
     </ul>
     {% if  user.is_authenticated%}
-    <center><div class="navbar-form navbar-right" style="margin-top:12px;">
-            <a style="color:black;  border:2px dashed black; padding:10px; "
-      href="{% url 'Home:logout' %}">Logout</a>
+    <div class="navbar-form navbar-right" style="margin-top:1px; ">
+            <center><a style=" padding:10px; " href="{% url 'Home:logout' %}"><button class="logs"><span>Logout</span></button></a></center>
     </div>
-    <form class="navbar-form  navbar-right">
+    <center><div class="navbar-form  navbar-right" style="margin-top:10px;">
       <p>Welcome <a href="{% url 'Home:profile' %}">{{user.username}}
        <!--{%if user.is_model is True%}<img style="width:38px; height:35px; border:3px dashed; border-radius:70%" src="{{pmod.model_image.url}}">{% endif%}--></a></p>
-      </form></center>
+      </div></center>
            {% else %}
-      <form class="navbar-right" style="margin-top:14px; margin-bottom:14px;">
-           <center> <a style="color:black;  border:2px dashed black; padding:10px; "
-      href="{% url 'Home:login'%}">Sign In</a></center></form>
+      <div style="margin-top:2px" class="navbar-right">
+           <center> <a style=" padding:10px; " href="{% url 'Home:login'%}"><button class="logs"><span>Sign in</span></button></a></center>
+      </div>
 
     
     {% endif%}
   </div>
   </div>
 </div> 
-<div>
+<div class="conte">
 {% block content %}
 
 {% endblock%}
@@ -117,4 +118,7 @@
 {% block javascripts%}
 
 {% endblock %}
+{% block modal%}
+
+{% endblock%}
 </html>
