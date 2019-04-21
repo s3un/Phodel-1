@@ -128,7 +128,7 @@ STAR_RATINGS_STAR_HEIGHT=12
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'phodel',
+        'NAME': 'gr8temi$phodel',
         'USER': 'gr8temi',
         'PASSWORD': 'ABRAHAM13/0609',
         'HOST': 'gr8temi.mysql.pythonanywhere-services.com',
