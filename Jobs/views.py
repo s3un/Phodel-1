@@ -9,6 +9,8 @@ from .forms import JobModelForm
 from django.contrib import messages
 from django.core.mail import EmailMessage, send_mail, EmailMultiAlternatives
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.db.models import Q
+
 
 # Create your views here.
 
@@ -52,14 +54,15 @@ class CompanyView(View):
 			state=c['state'],
 			lga=c['lga'],
 			town =c['town'],
-			gender=c['gender'],
-			height=c['height'],
+			# gender=c['gender'],
+			# height=c['height'],
 			Job_Description=c['Job_Description'],
 			personal_note=c['personal_note'],
 			street_address=c['street_address'],
 			create.save()
 			form.save_m2m()
 			return HttpResponse('Job Successfully added and awaiting Approval')
+		return HttpResponse(form.error()) 
 
 def JobView(request):
 	template= 'Jobs/jobs.html'
@@ -201,6 +204,7 @@ def Check(request, pk,jpk):
 	'image':image,
 	'appl':appl,
 	'job':job,
+	
 	}
 	return render(request,template,context)
 #status code 1 is shortlisted
@@ -287,15 +291,26 @@ def offers(request, pk):
 		profil = CustomUser.objects.get(pk=request.user.pk)
 		modl = Pmodel.objects.get(pk=pk)
 		info = Pcompany.objects.get(user__pk=profil.pk)
-		jobs = Job.objects.filter(Job_author__pk=info.user.pk)
-
-		context={
-		'profil':profil,
-		'info':info,
-		'jobs':jobs,
-		'modl':modl,
-		}
-		return render(request, template, context) 
+		jo = Job.objects.filter(Job_author__pk=info.user.pk)
+		appl=Application.objects.get(applicant_id=modl.pk, job_id=jo.pk)
+		if appl.exists():
+			jobs= Job.objects.filter(Job_author__pk=info.user.pk) and Job.objects.filter(-Q(Job_title=appl.Job_title)) 
+			context={
+			'profil':profil,
+			'info':info,
+			'jobs':jobs,
+			'modl':modl,
+			}
+			return render(request, template, context)
+		else:
+			jobs= Job.objects.filter(Job_author__pk=info.user.pk) 
+			context={
+			'profil':profil,
+			'info':info,
+			'jobs':jobs,
+			'modl':modl,
+			}
+			return render(request, template, context)		 
 	elif request.method == 'POST':
 		profil = CustomUser.objects.get(pk=request.user.pk)
 		modl = Pmodel.objects.get(pk=pk)
@@ -334,19 +349,34 @@ def Job_offers(request, pk):
 	info = Pmodel.objects.get(user__pk=profil.pk)
 	jobs= Job.objects.get(pk=pk)
 	offer = Offer.objects.get(job=jobs, applicant_id=info.pk)
-
+	# applied=Application.objects.filter(job_id=job.pk, applicant_id=info.pk)
+	# if applied.exists():
+	# 	appl=Application.objects.get(job_id=job.pk, applicant_id=info.pk)
+	# 	go=True
+	# 	context={
+	# 	'profil':profil,
+	# 	'info':info,
+	# 	'jobs':jobs,
+	# 	'offer':offer,
+	# 	'appl':appl,
+	# 	'go':go
+	# 	}
+	# 	return render(request, template, context)
+	# else:
+	go=False
 	context={
 	'profil':profil,
 	'info':info,
 	'jobs':jobs,
-	'offer':offer
+	'offer':offer,
+	'go':go
 	}
-	return render(request, template, context)
+	return render(request, template, context)		
 
 #offer acepted
 def offers_accept(request, pk):
 	offer = get_object_or_404(Offer,pk=pk)
-	offer.status=1
+	offer.status=2
 	offer.save()
 	applying= Application.objects.create(
 	Job_title=offer.job.Job_title,

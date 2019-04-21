@@ -1,0 +1,16 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<table class="table table-stripped " style="margin-top:100px;">
+	<tr class="btn-warning">
+		<th>Applicants</th>
+		<th>Link</th>
+	</tr>
+	{% for ap in appl%}
+	<tr>
+		<td>{{ap.applicant}}</td>
+		<td><a href="{% url 'Home:model_profile' pk=ap.applicant_id jpk=jobs.pk%}">View Profile</a></td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

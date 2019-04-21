@@ -3,7 +3,8 @@
 from django.contrib.auth.models import AbstractUser, UserManager
 # Create your models here.
 from django.db import models
-
+from star_ratings.models import Rating
+from django.contrib.contenttypes.fields import GenericRelation
 class Gender(models.Model):
 	"""
 	Description: Model Description
@@ -31,12 +32,13 @@ class Pmodel(models.Model):
 	tag = models.CharField(max_length=10, default='Model')
 	gender = models.ForeignKey(Gender, on_delete=models.CASCADE, default=True)
 	height = models.PositiveIntegerField(blank=True, null=True)
-	email = models.EmailField()
+	email = models.EmailField (unique=True)
 	career_summary = models.TextField(blank=True)
 	weight = models.CharField(max_length=50, blank=True)
 	skin_color=models.CharField(max_length=50, blank=True)
 	age = models.PositiveIntegerField(blank=True, default=1)
 	model_image = models.ImageField(upload_to="Users/Model", default='Users/Model/user.png', blank=True)
+	model_rating = GenericRelation(Rating, related_query_name='pmodels')
 
 	def publish(self):
 		self.save()

@@ -1,5 +1,6 @@
 from django import forms
 from .models import Job,Lga
+from tinymce.widgets import TinyMCE
 
 class JobModelForm(forms.ModelForm):
 	class Meta:
@@ -10,20 +11,22 @@ class JobModelForm(forms.ModelForm):
 		'state',
 		'lga',
 		'town',
-		'gender',
-		'height',
+		# 'gender',
+		# 'height',
 		'payout',
-		'Job_Description',
-		'personal_note',
+		'Gig_Description',
+		# 'personal_note',
+		'requirement',
 		'street_address',
 		]
 		widgets={
 			'Job_author':forms.HiddenInput(),
 			'gender':forms.CheckboxSelectMultiple(),
+			
 			}
 		help_texts={
 			'payout':'Enter Payment for gig',
-			'height':'Enter required height in Feet',
+			'requirement':'Enter requirment for the Gig',
 			'Job_title':'Enter Gig Title',
 			'state':'Select State of the gig',
 			'lga':'Select lga of the gig',

@@ -1,0 +1,64 @@
+{% extends 'home/signbase.html'%}
+{%load static from staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!--  {% if form.non_field_errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" >
+      {% for error in form.non_field_errors %}
+        <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+      {% endfor %}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endif %}-->
+  <div class="row">
+    <div class="col-md-4 col-xs-1"></div>
+    <div class=" col-md-4 col-xs-10 seekersbox">
+
+      <center><h2 style="color:white;">Sign in</h2></center>
+      <div style="padding:2%; margin-bottom:5%;">
+      <form method="post" novalidate >
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="form-group">
+          {{ form.username|as_crispy_field }}
+        </div>
+
+        <div class="form-group">
+          {{ form.password|as_crispy_field }}
+        </div>
+
+        <div class="form-check">
+             <input type="checkbox" class="form-check-input" id="exampleCheck1">
+             <label style="color:white;" class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <center><button type="submit" class="butto" style="width:90%"><span>Log in</span></button></center>
+      </form>
+      <div class="row">
+         <div class="col-md-6 col-xs-7 "> <a href="{% url 'Home:password_reset' %}"><center><div style="margin-top:12px;"  class="passwordreset butt">Forgot password?</div></center></a></div>
+         <div class="col-md-2 col-xs-1"></div>
+         <div class="col-md-4 col-xs-4"> <a href="#" class="signs"><center><div style="margin-top:12px;" class="butt"> Sign Up</div></center></a></div>
+      </div> 
+        <center><div style="font-weight:bold; color:white; margin-top:5px;" class="orset"> OR</div></center>
+        <center><div style="color:white; font-weight:bold; margin-top:5px;" class="orset"> SIGN IN WITH...</div></center>
+     <center> <div style="margin-top:5px; padding: 10px;" class="">
+        <button style=""  type="submit" class="butto"><img src="{% static 'img/search.png' %}"> GOOGLE</button>
+       </div></center>  
+      </div>
+      <center></center>
+      
+    </div>
+    <div class="col-md-4 col-xs-1"></div>
+  </div>
+{% endblock %}
+{% block script%}
+<script>
+$(document).ready(function(){
+  $('.signs').popover({title: "<center><h4 style='color:black'>Sign Up</h4><center>", content: "<a href='{% url 'Home:model_signup' %}' class='btn btn-student btn-lg' role='button'>Model</a> <hr> <a href='{% url 'Home:company_signup' %}' class='btn btn-student btn-lg' role='button'>Seeker</a>", html: true, placement: "auto top"}); 
+});
+</script>     
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends 'home/base.html'%}
+{% block style %}
+<style type="text/css">
+  .pagy li>a {
+    color: #15150b;
+  } 
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus{
+    z-index: 3;
+    color:#70451c;
+    background-color:#15150b ;
+    border-color:#15150b ;
+  }
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+    z-index: 3;
+    color:#fff;
+    background-color:#70451c ;
+    border-color:#70451c ;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="homebox"></div>
+<br>
+<br>
+  <div class="row">
+    <div class="col-md-9">
+          <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <p style="" >Gig Applications <span class="badge" style="float: right; color: black; margin: 5px; font-size:18px;">{{applcount}}</span></p>
+              </div></div>
+              <div class="boxs feature">
+                {% for ap in appl%}
+              <div class="tab-info">
+                  <h4>{{ap.Job_title}}</h4>
+                  <h6>{{ap.Job_author}}</h6>
+                  {% if ap.status is 1%}
+                  <h4>Status:<span class="text-success">Shortlisted</span></h4>
+                  {% elif ap.status is 2%}
+                  <h4>Status:<span class="text-danger">Declined</span></h4>
+                  {% else %}
+                  <h6>Status:<span class="text-info"> Received</span></h6>
+                  {% endif %}
+              </div>
+              {% endfor %}
+              {% if applcount > 1 %}
+                <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              {% endif %}
+            </div>
+              
+        </div>
+        <div id="info"></div>
+        <div class="col-md-12" id="">
+            <div class="boxs">
+                <div class="singletab">
+                    <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left: 10px;" >New Gigs</p>
+                  </div>
+            </div>
+            {% include 'Jobs/job_pages.html'%}
+        </div>
+    </div>
+    <div class="col-md-3">
+
+          <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left:10px; " >Gig Offers <span class="badge" style="float: right; color: #000; margin: 5px; font-size:18px;">{{cont}}</span></p>
+
+              </div>
+
+            </div>
+              <div class="boxs feature">
+                {% for job in offer%}
+              <div class="tab-info">
+                  <a href="{% url 'Home:job_offer' pk=job.job.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{job.job.Job_title}}</h4></a>
+                  <h6>Published: {{job.job.created_date.date}}</h6>
+                  <h4>{{job.job.lga}}, {{job.job.state}}</h4>
+                  <p>{{job.job.personal_note}}</p>
+              </div>
+              {% endfor %}
+              {% if cont > 1%}
+              <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              {% endif %}
+            </div>
+              
+        </div>
+
+          <div class="col-md-12">
+            <div class="boxs">
+            <div class="singletab">
+                <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left:10px; " >Featured Gigs</p>
+              </div></div>
+              <div class="boxs feature">
+                {% for job in Fjobs%}
+              <div class="tab-info">
+                  <a href="{% url 'Home:jobdetails' pk=job.jobs.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{job.jobs.Job_title}}</h4></a>
+                  <h6>Published: {{job.jobs.created_date.date}}</h6>
+                  <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
+                  <p>{{job.jobs.personal_note}}</p>
+              </div>
+              {% endfor %}
+            </div>
+              
+        </div>
+        <div class="col-sm-12">
+          <div class="boxs">
+              <div class="singletab">
+                  <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left: 10px;" >Hot Gigs</p>
+                </div></div>
+                <div class="boxs feature">
+                	{% for job in hjobs %}
+                      <div class="tab-info">
+                        <a href="{% url 'Home:jobdetails' pk=job.jobs.pk%}" ><h4><i style="border:1px solid black; border-radius:70px;" class="glyphicon glyphicon-flash"></i> {{job.jobs.Job_title}}</h4></a>
+                        <h6>Published: {{job.jobs.created_date.date}}</h6>
+                         <h4>{{job.jobs.lga}}, {{job.jobs.state}}</h4>
+                         <p>{{job.jobs.personal_note}}</p>
+                      </div>
+                    {% endfor %}
+                </div>
+          
+        </div>
+
+        <div class="col-sm-12">
+            <div class="boxs">
+                <div class="singletab">
+                    <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left: 10px;" >News</p>
+                  </div></div>
+                  <div class="boxs feature">
+                     {% for n in news %}
+                        <div class="tab-info"><a href="{% url 'Home:Ndetails' id=n.pk %}" ><h4>{{n.Title}}</h4></a>
+                        <!-- <p>Its was a great event that occured in silverbird cinema ground hall <a href="news.html">Continue</a></p>-->
+                        </div>
+                    {% endfor %}
+                  </div>
+            
+          </div>
+    </div>
+  </div>
+</div>
+<br>
+{% endblock %}

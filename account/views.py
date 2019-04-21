@@ -6,6 +6,14 @@ from django.views.generic import CreateView, TemplateView
 from django.views.generic.edit import UpdateView
 from .forms import ModelSignUpForm, CompanySignUpForm, ImageUploadForm, InterestForm
 from .models import CustomUser, Pmodel,Pcompany, images, interest
+from django.contrib.auth import get_user_model
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from .tokens import account_activation_token
+from star_ratings.models import Rating
 # Create your views here.
 
 class SignUpView(TemplateView):
@@ -23,9 +31,32 @@ class ModelSignUpView(CreateView):
 
 	def form_valid(self, form):
 		user = form.save()
-		login(self.request, user)
-		return redirect('Home:index')
+		# login(self.request, user)
+		return redirect('Home:verify')
 
+def verify(request):
+	template= 'account/send.html'
+	return render (request, template)
+
+
+def activate(request, uidb64, token):
+	User=get_user_model()
+	try:
+		uid = urlsafe_base64_decode(uidb64).decode()
+		user = User.objects.get(pk=uid)
+	except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+		user = None
+	if user is not None and account_activation_token.check_token(user, token):
+		user.is_active = True
+		user.save()
+		profil = CustomUser.objects.get(pk=uid)
+		info = Pmodel.objects.get(user__pk=profil.pk)
+		Rating.objects.create(object_id=info.pk)
+		# login(request, user)
+		return redirect('Home:login')
+		return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+	else:
+		return HttpResponse('Activation link is invalid!')
 
 class CompanySignUpView(CreateView):
 	model = CustomUser
@@ -100,17 +131,17 @@ def Remove_interest(request, pk):
 class Career(UpdateView):
 	model=Pmodel
 	fields = ['career_summary']
-	template_name_suffix = '_update_form'
+	template_name = 'account/Pmodel_update_form.html'
 	success_url= reverse_lazy('Home:profile')
 
 class Statistics(UpdateView):
 	model=Pmodel
 	fields = ['height','age','weight','skin_color']
-	template_name_suffix = '_update_form'
+	template_name = 'account/Pmodel_update_form.html'
 	success_url= reverse_lazy('Home:profile')
 
 class ImageUpdate(UpdateView):
 	model=Pmodel
 	fields = ['last_name','first_name','model_image']
-	template_name_suffix = '_update_form'
+	template_name = 'account/Pmodel_update_form.html'
 	success_url= reverse_lazy('Home:profile')

@@ -1,0 +1,51 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<div class="table-responsive">
+<table class="table " style="margin-top:80px;">
+	<tr class="btn-warning">
+		<th>Title</th>
+		<th>Lga</th>
+		<th>state</th>
+		<th>Publisher</th>
+		<th>mode</th>
+		<th>remove</th>
+	</tr>
+	{% for jo in job%}	
+	<tr>
+		<td>{{jo.Job_title}}</td>
+		<td>{{jo.lga}}</td>
+		<td>{{jo.state}}</td>
+		<td>{{jo.Job_author.username}}</td>
+		<td>
+       {% if jo.is_active is True %}
+       <a class="mode" href="#" data-nurl="{% url 'Home:deactive_jobs' dpk=jo.pk %}"  data-npk:"{{jo.pk}}"><button class="btn btn-danger">Deactivate</button></a>
+       {%else%} 
+       <a class="mode" data-nurl="{% url 'Home:active_jobs' pk=jo.pk %}" href="#" data-npk:"{{jo.pk}}"  ><button class="btn btn-success">Activate</button></a>
+       {%endif%} 
+		</td>
+		<td><a  href="#" class="mode" data-nurl="{% url 'Home:job_remove' pk=jo.pk %}" data-npk:"{{jo.pk}}"><i class="text-danger glyphicon glyphicon-remove"></i></a></td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}
+
+{% block javascripts%}
+<script type="text/javascript">
+  $('.mode').on('click', function (e) {
+    var data = $(this).data()
+    $.ajax({                       
+        url: data.nurl,                    
+        data: {
+            'pks': data.npk,     
+        },
+        success: function (data) {   
+			 alert(data)
+			 location.reload()
+        }
+    });
+    
+});
+</script>
+{% endblock %}

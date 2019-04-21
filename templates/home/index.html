@@ -1,0 +1,283 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles %}
+<!--
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="{% url 'Home:signup' %} ">SignUp</a>
+</body>
+</html>-->
+{% block style%}
+<style type="text/css">
+#slideLeft {
+  -skrollr-animation-name:slideInLeft;
+}
+  @-skrollr-keyframes slideInLeft {
+  top {
+    color:rgb(0,0,0);
+  }
+
+  bottom {
+    color:rgb(255,0,0);
+  }
+}
+
+</style>
+{% endblock %}
+{% block content %}
+<div>
+  <div class="container-fluid" >
+      <div class="row"> 
+          <div class="firstpic image-reponsive">
+           
+          </div>
+        <div class="col-md-12 col-xs-12 col-sm-12 centered">
+            <center><img src="{% static 'img/plogo.png' %}" style="width:200px; height:100px;">
+              <h4>Our automated, hassle-free process allows you to book models,</h4> 
+              <h4>in as quickly as one hour.</h4>
+                  <h4>Use our booking tools for free. Submit your job</h4>
+            </center>  
+            <center>
+                <div class="" style="margin-top:40px;">
+                  <div class="col-md-5 col-sm-3 col-xs-2   "></div>
+                    <div class="col-md-1   col-xs-pull-1  col-sm-3  col-xs-4 animated slideInLeft slow">
+                    <a  href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px;" type="button" role="button" ><button class="logs" style="width:120px;"><span>MODELS</span></button></a>
+                    </div>
+                    <div class="col-md-1  col-md-push-1 col-sm-3 col-xs-4 animated slideInRight slow">
+                    <a  href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px;" type="button" role="button"><button style="width:120px;" class="butto"><span>SEEKERS</span></button>
+                     </a></div>
+                    <div class="col-md-5 col-sm-3 col-xs-2"></div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                <div class="learn contents">
+                  Learn More</div>
+                  <div class="animated icon heartBeat infinite slow">
+                  <i id="contentid" style="color:black; font-size:18px;" class="glyphicon glyphicon-circle-arrow-down"></i></div>
+                </div>
+                
+
+            </center>
+        </div>
+      </div>
+  </div>
+  <div class="" id="contents" data-menu-offset="-100" >
+      <div class="supportbox" style=" color:black; padding:5px; background:#b37400;">
+        <div class="row">
+            <center><h2>Supported Firms</h2></center>
+        </div>
+      </div>
+  </div>
+  <br>
+  <div class="bgimg-1" >
+      <div class="caption">
+      <center>
+          <h1>CAREER</h1>
+       </center>
+
+    </div>
+          <div class="career row">
+              <div  class="col-md-6 describe" >
+                <div class="col-md-12">
+                  <div class="row">
+                  <div class="col-md-4 col-xs-2"></div>
+                 <center> <div class="col-md-4 col-xs-8 "><h3 style=" color:black;  border:2px solid  #211B0E; padding:5px; background:#b37400;">MODELS</h3></div></center>
+                  <div class="col-md-4 col-xs-2"></div></div>
+                    <p class="textph">Phodel provides a platform for models to connect and showcase themselves, we operate to make the least model be known.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-6 describe" >
+                <div class="col-md-12">
+                  <div class="row">
+                  <div class="col-md-4 col-xs-2"></div>
+                  <center><div class="col-md-4 col-xs-8 "><h3 style=" color:black;  border:2px solid  #211B0E; padding:5px; background:#b37400; ">SEEKERS</h3></div></center>
+                  <div class="col-md-4 col-xs-2"></div></div>
+                    <p>Phodel provides a platform for models to connect and showcase it self, we operate to make the least model be known.
+                  </p>
+                </div>
+              </div>
+          </div>
+    </div>
+  <br>
+  <div class="container app" >
+    <div class="row " style=" color:black; padding:5px; background:#b37400;">
+      
+     <center><h2  style="color:black;">Top Models</h2></center>
+    
+    </div>
+      <div class="row">
+        <div class="col-xs-11 col-md-10 col-centered">
+          <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="carousel-col">
+                      <div class="block yellow img-responsive">
+                        <a href=""><img src="{% static 'img/darcy.jfif' %}" style="width: 90%; height:250px;"></a>
+                      </div>
+                    </div>
+                  </div>
+
+              <div class="item">
+                  <div class="carousel-col">
+                    <div class="block yellow img-responsive">
+                      <img src="{% static 'img/body.jpg' %}" style="width: 90%; height:250px;">
+                    </div>
+                  </div>
+                </div>
+
+
+              <div class="item">
+                  <div class="carousel-col">
+                    <div class="block yellow img-responsive">
+                      <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                    </div>
+                  </div>
+                </div>
+
+              <div class="item">
+                <div class="carousel-col">
+                  <div class="block yellow img-responsive">
+                    <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="item">
+                  <div class="carousel-col">
+                    <div class="block yellow img-responsive">
+                      <img src="{% static 'img/body3.jpg' %}" style="width: 90%; height:250px;">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="item">
+                  <div class="carousel-col">
+                    <div class="block yellow img-responsive">
+                      <img src="{% static 'img/nike00.jpg' %}" style="width: 90%; height:250px;">
+                    </div>
+                  </div>
+                </div>
+            </div>
+    
+            <!-- Controls -->
+            <div class="left carousel-control">
+              <a href="#carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </div>
+            <div class="right carousel-control">
+              <a href="#carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </center>  
+    </div> 
+  <br>
+
+  <div class="bgimg-2">
+      <div class="caption describe">
+        
+           <p> Our model are experienced and mostly agency free ensuring you get the best possible outcome from your shoot.</p>
+        
+      </div>
+      <center>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="buttons2 moveUp">
+                    <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="" type="button" role="button"  ><button style="width:120px;" class="butto"><span>MODELS</span></button></a>
+                    <a  href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="  margin:4%; " type="button" role="button" ><button style="width:120px;" class="logs"><span>SEEKERS</span></button>
+                    </a>
+                </div>
+          </div>
+        </div> 
+      </center>
+    </div>
+  <div class="row" style="">
+    <div class=" theader Testimonial">
+  <div class=" row" style=" color:black; padding:5px; background:#b37400;"><center><h2 style="color:black;">Testimonial</h2></center></div>    
+      <div class="theader container-fluid" style="">
+          
+        <div class="col-md-12">        
+          <div class="col-md-3 tfull"style=";" >
+              <div class="col-md-12 just">
+              <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+              <center><h3>ADAMS TEMIDIRE</h3></center>
+              <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+              <div class="col-md-12 ">
+                  <p class="justi" style="text-align:center; font-size:20px;   font-style: italic;"><q id="b">I booked models using PHODEL and the experience was amazing,
+                    no charges, had to make a choice out of so many,
+                    my office wasn't crowded with models</q>
+                  </p>
+              </div>
+              </div>
+          </div>
+
+          <div class="col-md-3 tfull "style=";">
+              <div class="col-md-12 just">
+                <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+                 <center><h3>ADAMS TEMIDIRE</h3></center>
+                 <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+                 <div class="col-md-12 ">
+                     <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
+                      no charges, had to make a choice out of so many,
+                      my office wasn't crowded with models</q>
+                     </p>
+                 </div>
+              </div>
+          </div>
+          <div class="col-md-3 tfull "style=";">
+              <div class="col-md-12 just">
+                <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+                 <center><h3>ADAMS TEMIDIRE</h3></center>
+                 <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+                 <div class="col-md-12 ">
+                     <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
+                      no charges, had to make a choice out of so many,
+                      my office wasn't crowded with models</q>
+                     </p>
+                 </div>
+              </div>
+          </div>
+          <div class="col-md-3 tfull "style=";">
+              <div class="col-md-12 just">
+                <center><div class="timage"><img style="margin-top:10px;" src="{% static 'img/body.jpg' %}"></div></center> 
+                 <center><h3>ADAMS TEMIDIRE</h3></center>
+                 <center><h5>CO C.E.O Amatechy Foundation</h5></center>
+                 <div class="col-md-12 ">
+                     <p class="justi" style="text-align:center; font-size:20px; font-style: italic;"><q>I booked models using PHODEL and the experience was amazing,
+                      no charges, had to make a choice out of so many,
+                      my office wasn't crowded with models</q>
+                     </p>
+                 </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 details">
+       
+      </div>
+    </div>
+  </div>
+  <br>
+  </div>
+</div>
+{% endblock %}
+{% block javascripts%}
+<script>
+</script>
+{% endblock%}

@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+
+{%block content%}
+<div class="container" style="padding-top:70px;">
+    <div class="row">
+        <div class="col-md-10">
+
+            <div class="">
+            <div class="boxs">
+                <div class="singletab">
+                    <p style="color:#b37400; font-family:ocraext; font-size: 30px; margin-left:10px;" >{{job.Job_title}}</p>
+                </div></div>
+                <div class="boxs">
+                <div class="job-content">
+                    <div>
+                        <h5>Job Location</h5>
+                        <li >{{job.street_address}}, {{job.town}}, {{job.lga}}, {{job.state}}</li>
+                    </div>
+                    <div>
+                        <h5>Job Description</h5>
+                        <li >{{job.personal_note}} </li>
+                    </div>
+
+                         <div>
+                                <h5>Job Requirement</h5>
+   <!--                             <li >Height: {{job.height}}Ft</li>
+                                <li>Gender:
+                                  {%for g in job.gender.all%}
+                                  {{g}}
+                                  {%endfor%}
+                                </li>-->
+                            </div>
+                            <div>
+                              <h5>Renumeration</h5>
+                              <li>Payout: #{{job.payout}}</li>
+                            </div>
+                    <center>
+                         {% if go is True %}
+                              {% if appl.status is 1%}
+                              <h4>Status:<span class="text-success"> You've been Shortlisted</span></h4>
+                              {% elif appl.status is 2%}
+                              <h4>Status:<span class="text-danger"> Your Application has been declined</span></h4>
+                              {% else %}
+                              <h4>Status:<span class="text-info"> Received</span></h4>
+                              {% endif %}
+                        {% else %}
+                        <a href="{% url 'Home:apply' pk=job.pk %}"><button style="margin-top:20px;" class="buttons"><span>APPLY</span></button></a>
+                        {% endif %}
+                    </center>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

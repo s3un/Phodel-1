@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from tinymce.models import HTMLField
 # Create your models here.
 
 class States(models.Model):
@@ -42,12 +43,12 @@ class Job(models.Model):
 	town = models.CharField(max_length=50, default=' ')
 	street_address = models.CharField(max_length=100)
 	is_active = models.BooleanField(default=False)
-	gender= models.ManyToManyField('Gender')
-	height = models.PositiveIntegerField(blank=True)
-	Job_Description = models.CharField(max_length=200, default=' ')
-	personal_note= models.CharField(max_length=500, blank=True)
+	# gender= models.ManyToManyField('Gender')
+	# height = models.PositiveIntegerField(blank=True)
+	Gig_Description = HTMLField()
+	requirement= HTMLField(default='None')
 	payout = models.FloatField(default=1.0)
-	jslug=models.SlugField()
+	# jslug=models.SlugField()
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
 

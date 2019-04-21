@@ -9,6 +9,9 @@
 <a href="{% url 'Home:signup' %} ">SignUp</a>
 </body>
 </html>-->
+{% block style%}
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css">
+{% endblock %}
 
 {% block content %}
 <div>
@@ -24,9 +27,9 @@
                   <h4>Use our booking tools for free. Submit your job</h4>
             </center>  
             <center>
-                <div style="margin-top:40px;">
-                    <a href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; border-radius: 20px; font-size: 20px; padding:10px;" type="button" role="button" >MODELS</a>
-                    <a href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black;border-radius: 20px; font-size: 20px; padding:10px;" type="button" role="button">
+                <div class="animated slideInLeft" style="margin-top:40px;">
+                    <a class="animated slideInLeft delay-4s" href="{% if user.is_authenticated and user.is_model is True%}{% url 'Home:homeView'%}{%elif user.is_authenticated and user.is_company is True%}{% url 'Home:modl'%}{% else %}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black; border-radius: 20px; font-size: 20px; padding:10px;" type="button" role="button" >MODELS</a>
+                    <a class="animated slideInRight" href="{% if user.is_authenticated and user.is_company is True%}{% url 'Home:homeView'%}{%else%}{% url 'Home:login'%}{%endif%}" style="margin-top:20px; color:black;  border:1px dashed black;border-radius: 20px; font-size: 20px; padding:10px;" type="button" role="button">
                      SEEKERS</a>
                 </div>
                 <div class="learn contents">

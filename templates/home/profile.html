@@ -1,0 +1,149 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles %}
+{%block style%}
+{%endblock%}
+{%block content%}
+<div class="row" style="padding-top:70px;">
+  <div class="container-fluid">
+  <div class="col-md-8 ">
+             <div class="single-member text-center">
+             <div class="team-heading">
+               <a href="{% url 'Home:detail_update' pk=info.pk %}"><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+             </div>
+             <div class="member-img">
+                 <a href="{{info.model_image.url}}"><img class="" src="{{info.model_image.url}}"></a>
+
+             </div>
+                 <div class="feature">
+                     <h4>{{info.last_name}} {{info.first_name}}</h4>
+                     
+                 </div>
+         </div>
+            
+             <div class="boxs">
+              <div class="singletab">
+              <a href="{% url 'Home:career' pk=info.pk %}"><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p>Career Summary</p></div>
+             </div>
+             <div class="boxs  member-data">
+                 <div class="member-info" >
+                <p>{{info.career_summary}}</p>
+
+                 </div>
+             </div>
+         
+            <div class="text-center">
+             <div class="boxs singletab">
+              <span style="float: right; color: white; margin: 2%;" ><a href="{% url 'Home:upload_image' %}"><i style="margin-right:15px; color: #b37400;" class="glyphicon glyphicon-plus"></i></a>   </span>
+              <p >Gallery</p>
+             </div>
+             <div class=" boxs member-data">
+                <div class="member-info">
+                  <div class="container-fluid">
+                    <div class="row">
+                  {% for img in imge %}
+                  <div class="col-md-3 col-xs-6 ">
+                    <div class="w3-display-container thumbnail">
+                      <a href="{{img.image.url}}"><img class="img-responsive " style="width:150px; height:150px;" src="{{img.image.url}}"></a>
+    <a  href="#myModal" data-img="{{img.image.url}}" data-rem="{% url 'Home:remove_image' pk=img.pk %}" data-toggle="modal" data-target="" style=" border:1px solid; right:-1px; border-radius:50px;" class="img-show btn-danger w3-display-topright"><center><i  
+            class=" glyphicon glyphicon-minus"></i></center></a>
+                    </div>
+                  </div>
+                  {%endfor%}</div>
+                </div>
+              </div>
+              <div class="gallery"> <h4><a href="">View All</a></h4></div>
+              </div>
+             
+         </div>
+  </div>
+  <div class="col-md-3">
+            <div class="text-center">
+             <div class="boxs singletab">
+              <a href="{% url 'Home:statistics' pk=info.pk %}"><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p >Statistics</p>
+             </div>
+             <div class="boxs feature">
+                 <div class=" tab-info" >
+                     <h4>Height: <span>{{info.height}} feet</span></h4></div>
+                     <!--<h4>image size: {{siz}}Kb</h4>-->
+                    <div class=" tab-info" ><h4 >Age: <span>{{info.age}}</span></h4></div>
+                    <div class=" tab-info" ><h4 >Weight: <span>{{info.weight}}</span></h4></div>
+                    <div class=" tab-info" ><h4 >Skin Color: <span>{{info.skin_color}}</span></h4></div>   
+             </div>
+         </div>
+
+            <div class=" text-center">
+             <div class="boxs singletab">
+              <a href=""><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p >Past Jobs</p>
+             </div>
+             <div class="  boxs feature ">
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info gallery"> <h4><a href="">View All</a></h4></div>
+             </div>
+         </div>
+
+<div class=" text-center">
+             <div class=" boxs singletab">
+              <span style="float: right; color: white; margin: 2%;" ><a href="{% url 'Home:interest_add' %}"><i style="margin-right:15px; color: #b37400;" class="glyphicon glyphicon-plus"></i></a> </span>
+              <p >Interests</p>
+             </div>
+             <div class="boxs feature ">
+                      {%for inte in inter%}
+                     <div class=" tab-info w3-display-container" ><h4>{{inte.interests}} <a href="{% url 'Home:remove_interest' pk=inte.pk %}" style="right:10px;" class=" w3-display-topright"><i  class="text-danger glyphicon glyphicon-minus"></i></a> </h4></div>
+                      {%endfor %}
+             </div>
+         </div>
+
+  </div>
+</div>
+</div>
+{% endblock%}
+{% block javascripts %}
+<script type="text/javascript">
+  $('.img-show').on('click', function (e) {
+    var imgs = $(this).data('img');
+    var rems = $(this).data('rem');
+    $('#mo_image').attr('src', imgs);
+    $('#image_rem').attr('href', rems);
+  });
+</script>
+  
+{%endblock%}
+
+{% block modal%}
+<div class="col-md-12">
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header btn-danger">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Delete Image</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete ?</p>
+        <img class="img-responsive" id="mo_image">
+      </div>
+      <div class="modal-footer">
+        <a id="image_rem" href=""><button class="btn btn-danger">Delete</button></a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div></div>
+{% endblock%}

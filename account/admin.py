@@ -12,6 +12,9 @@ class CustomUserAdmin(UserAdmin):
 
 	list_display=['username', 'email', 'first_name', 'last_name','is_model','is_company']
 
+# class ModelsAdmin(admin.ModelAdmin):
+# 	prepopulated_fields = {"model_rating": ("id",)}
+
 admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Pmodel)
 admin.site.register(Pcompany)

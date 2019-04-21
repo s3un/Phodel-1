@@ -1,0 +1,4 @@
+<h3>Hi, {{applicant}}</h3>
+<p>Good day, We write to notify you that you have a new gig offer from {{Job_author}} for {{Job_title}}. Check Dashboard to accept or reject offer</p>
+<h5>Best Regards</h5>
+<h5>Phodel Team.</h5>

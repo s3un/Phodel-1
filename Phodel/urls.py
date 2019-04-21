@@ -23,8 +23,9 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('home.urls')),
-    url(r'^search/', include('haystack.urls')),
+    # url(r'^search/', include('haystack.urls')),
     url(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
+    url(r'^tinymce/', include('tinymce.urls')),
 
 ]
 urlpatterns+=staticfiles_urlpatterns()

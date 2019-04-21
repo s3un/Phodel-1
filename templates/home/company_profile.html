@@ -1,0 +1,73 @@
+{%extends 'home/base.html'%}
+{% load static from staticfiles %}
+{%block style%}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" type="text/css">
+{%endblock%}
+{% block content %}
+<div class="row" style="padding-top:70px;">
+  <div class="container-fluid">
+  <div class="col-md-8 ">
+             <div class="single-member text-center">
+             <div class="team-heading">
+               <a href=""><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+             </div>
+             <div class="member-img">
+                 <img class="" src="img/body2.jpg">
+             </div>
+             
+                 <div class="feature">
+                     <h4>Company Name</h4>
+                     
+                 
+             </div>
+         </div>
+            <div class="text-center">
+             <div class="boxs singletab">
+              <a href=""><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p >Company Summary</p>
+             </div>
+             <div class="boxs  member-data">
+                 <div class="member-info" >
+                <p>i am a professional that is ready to take over the world.</p>
+
+                 </div>
+             </div>
+         </div>
+  </div>
+  <div class="col-md-3">
+            <div class="text-center">
+             <div class="boxs singletab">
+              <a href=""><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p >Company Info</p>
+             </div>
+             <div class="boxs feature">
+                 <div class=" tab-info" >
+                     <h4 >Address: <span></span></h4></div>
+                    <div class=" tab-info" ><h4 >Contact: <span></span></h4></div>                
+             </div>
+         </div>
+            <div class=" text-center">
+             <div class="boxs singletab">
+              <a href=""><span style="float: right; color: #b37400; margin: 2%;" class="glyphicon glyphicon-pencil"></span></a>
+              <p >Past Jobs</p>
+             </div>
+             <div class="  boxs feature ">
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info" >
+                     <h4>Shoot Name: <span>Dangote Shoot</span></h4>
+                     <p>Shoot Description <span>blalbla shit</span></p>
+                     <p>From <span>December</span></p>
+                     <p>To <span>January</span></p>
+                 </div>
+                 <div class="tab-info gallery"> <h4><a href="">View All</a></h4></div>
+             </div>
+         </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'home/base.html'%}
+{% block content%}
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4" style="padding-top:50px;" >
+	<center><h4>Create A Job Offer</h4></center>
+<div class="seekersbox" style="padding:5px;">
+<form method="post" class="form" >
+	{% csrf_token %}
+	<div class="form-group">
+		<label>Select Job</label>
+		<select name="Jobs" class="form-control">
+			{% for jo in jobs%}
+			<option value="{{jo.pk}}"> {{jo.Job_title}} - {{jo.Job_Description}}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<center><button style="margin-bottom:20px; width:120px;"  type="submit" class="butto"><span>Send</span> </button></center>
+</form></div></div>
+<div class="col-md-4"></div>
+</div>
+{% endblock%}
+

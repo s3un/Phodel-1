@@ -1,0 +1,34 @@
+{% extends 'home/base.html'%}
+
+{% block content %}
+<div class="container-fluid" style="padding-top:70px;" >
+    <div class="row">
+    	{% for mo in modls%}
+      <div class=" col-md-4 col-xs-12">
+          
+          <div class="col-md-12 boxs singletab">
+            <p >{{mo.last_name}} {{mo.first_name}} </p>
+          </div>
+
+          <div class="col-md-12 col-xs-12 boxs">
+          <div class="col-md-8 col-xs-8">
+            <img class="img-responsive" src="{{mo.model_image.url}}" style="height: 200px; margin-top: 20px;">
+          </div>
+          <div class="col-sm-4 col-xs-4 ">
+            <p style="margin-top:10px;"><a href=""><span class="glyphicon glyphicon-user"></span> PROFILE</a></p>
+                    {% for ra in rate%}
+                     <p>Ratings:{{ra.average}}</p>
+                    {% endfor %}
+                     <p>SEX: {{mo.gender}}</p> 
+                     <p>AGE: {{mo.age}}</p> 
+                     <p>HEIGHT:{{mo.height}}feet</p>                      
+                     <p>POINTS</p>
+                     <a href="{% url 'Home:offer' pk=mo.pk %}"><button type="button" style=" margin: 10px 0 10px 0;width:100px;" class=" buttons"><span>HIRE</span></button></a>
+          </div>
+          </div>
+      </div>
+      	{% endfor%}
+
+    </div>
+</div>
+{% endblock %}

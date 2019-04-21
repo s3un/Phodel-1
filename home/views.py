@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404,redirect, HttpResponse
 from django.views import generic
 from .models import Phodel
 import datetime
@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 from Jobs.forms import JobModelForm
 from account.models import Pmodel, Pcompany,CustomUser,images,interest
 from django.db.models import Q
-from news.models import News
+from blogs.models import NewsModel
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from star_ratings.models import Rating
 # Create your views here.
 def Home(request):
 		template= 'home/index.html'
@@ -62,7 +63,7 @@ def profile(request):
 		}
 		return render(request, template, context)
 	if request.user.is_company==True:
-		template= 'home/Company_profile.html'
+		template= 'home/company_profile.html'
 		profi = CustomUser.objects.get(pk=request.user.pk)
 		info = Pcompany.objects.get(user__pk=profi.pk)
 		context = {
@@ -80,7 +81,7 @@ def LoginViews(request):
 		applcount=Application.objects.filter(applicant_id=info.pk)[:2].count()
 		hjobs= Hot_Jobs.objects.all()
 		Fjobs= Featured_Jobs.objects.all()
-		news = News.objects.all()
+		news = NewsModel.objects.all()
 		jobs = Job.objects.filter(is_active=True).order_by('-created_date')
 		paginator = Paginator(jobs, 5)
 		page = request.GET.get('page')
@@ -129,7 +130,21 @@ def pages(request):
 def Modls(request):
 	template= 'home/models.html'
 	modls= Pmodel.objects.all()
+	for m in modls:
+		rate=Rating.objects.filter(object_id=m.pk)
+	# rating = Rating.objects.get(object_id=info.pk)
+		context={
+		'modls':modls,
+		'rate':rate
+		# 'rating':rating,
+		}
+		return render(request, template, context)
+
+def contact(request):
+	template= 'home/contact.html'
+	contact= Phodel.objects.get(pk=1)
 	context={
-	'modls':modls,
+	'contact':contact,
 	}
-	return render(request, template, context)
+
+	return render(request,template,context)
