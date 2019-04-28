@@ -1,0 +1,15 @@
+.nav	{
+	height: 60px;
+	width: 100%;
+	background-color: orange;
+	font-family: ocraext;;
+}
+
+.content	{
+	margin-top: 20px;
+	font-family: ocraext;
+}
+
+.heading h4	{
+	border: 1px solid orange;
+}

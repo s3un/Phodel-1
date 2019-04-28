@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 import django_heroku
 import os
-
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,28 +20,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&v)u34iz3!k$tko5g_wo(8_$3ho&6gb_gom(2!hfdi82638c+6'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG' cast=bool)
 
-ALLOWED_HOSTS = [
-    '192.168.137.85',
-    '192.168.137.249',
-    '127.0.0.1',
-    '192.168.43.150',
-]
+ALLOWED_HOSTS = ['*']
 LOGIN_REDIRECT_URL = 'Home:homeView'
 LOGOUT_REDIRECT_URL='Home:index'
 
 #E-mail settings
 # EMAIL_USE_TLS = True
-EMAIL_HOST = 'mail.phodel.com.ng'
-EMAIL_HOST_USER = 'temidire@phodel.com.ng'
-EMAIL_HOST_PASSWORD = 'ABRAHAM13/0609'
-EMAIL_PORT = 465
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
+
 
 
 
@@ -127,16 +123,15 @@ STAR_RATINGS_STAR_HEIGHT=12
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gr8temi$phodel',
-        'USER': 'gr8temi',
-        'PASSWORD': 'ABRAHAM13/0609',
-        'HOST': 'gr8temi.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', cast=int),
 
     }
 }
-
 SITE_ID=1
 
 # Password validation
@@ -178,7 +173,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT = '/staticfiles/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'asset'),
 )
