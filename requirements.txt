@@ -42,7 +42,7 @@ oauthlib==2.1.0
 odfpy==1.4.0
 openpyxl==2.5.12
 pendulum==2.0.4
-Pillow==5.2.0
+Pillow==10.3.0
 pipenv==2018.11.26
 protobuf==3.6.1
 psycopg2==2.7.7
