@@ -60,7 +60,7 @@ PyYAML==3.13
 requests==2.19.1
 requests-oauthlib==1.0.0
 six==1.11.0
-social-auth-app-django==3.1.0
+social-auth-app-django==5.4.1
 social-auth-core==2.0.0
 stripe==2.4.0
 swapper==1.1.0
